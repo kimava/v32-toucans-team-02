@@ -1,1 +1,29 @@
-
+*{
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+}
+:root{
+    --header:#CBC26D;
+    --header-link:#fff;
+    --header-hover:#BCBCBC;
+    --back:#FFF59D;
+    --font:#BCBCBC;
+    --shadow:##888888;
+    
+}
+.container{
+    padding: 0;
+    margin: 0;
+    background: var(--back);
+    width:100%;
+    height:100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.testimonials{
+    width:100%;
+    height:300px;
+    background-color: red;
+}

@@ -1,0 +1,29 @@
+
+
+.menu_item{
+    display: flex;
+    box-sizing: border-box;
+    height:100%;
+    align-items: center;
+    list-style: none;
+    margin:0;
+}
+.menu_item a{
+    box-sizing: border-box;
+    color:var(--header-link);
+    display: block;
+    padding: 30px 16px ;
+    height:100%;
+    text-decoration: none;
+   cursor: pointer;
+   
+}
+.menu_item a:hover{
+    box-shadow: 5px 10px 10px var(--shadow) ;
+    border-radius: 5px;
+    background: var(--header-active-back);
+    background: var(--header-hover);
+}
+.menu_item a :active ,.menu_item a:visited {
+    color:var(-header);
+}

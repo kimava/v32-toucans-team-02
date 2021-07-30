@@ -1,0 +1,22 @@
+.menu{
+    position:absolute;
+    margin:0;
+    padding: 0;
+    top:0;
+    right:0;
+    width:50%;
+    background: var(--header-hover);
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    box-sizing: border-box;
+}
+@media(min-width:44rem){
+.menu{
+    flex-flow: row;
+    right:0;
+    align-items: flex-start;
+    flex-direction: row-reverse;
+    background: none;
+}
+}
