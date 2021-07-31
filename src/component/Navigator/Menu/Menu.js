@@ -33,28 +33,40 @@ class Menu extends React.Component{
 
     state={
         width:window.innerWidth,
-        height:window.innerHeight,
+        hideMenu:false,
     }
     componentDidMount(){
         this.getScreenDimension()
+       
     }
     getScreenDimension=()=>{
        const  scrWidth=window.innerWidth
-       const scrHeight=window.innerHeight
         this.setState({
         width:scrWidth,
-        height:scrHeight
+        })
+        if(this.state.width<688){
+            this.setState({hideMenu:true,})
         }
-            )
+    }
+    showHideMenuHadler=()=>{
+        this.setState({hideMenu:!this.state.hideMenu})
     }
     render(){
         const menuItems = this.menu.map((item , index )=>(item.isLogedIn===this.props.logedIn)?<MenuItem key={index}>{item.name}</MenuItem>:null)
+        let icon =null
+        if(this.state.width<688)
+            icon=  <i onClick={this.showHideMenuHadler}  className={this.state.hideMenu ? 'fa fa-bars ' : 'fa fa-times '} />
+        else
+            icon=null
         return(
         
-           
-         <ul className="menu">
-             {menuItems}
-        </ul>
+          <div>
+                {icon}
+                <ul className={(this.state.hideMenu)?'hide_menu':'show_menu'}>
+                    {menuItems}
+                </ul>
+          </div> 
+         
         
        
           

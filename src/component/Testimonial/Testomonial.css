@@ -1,8 +1,15 @@
 .testimonial_container{
-    width:30%;
-    height:100px;
+    padding:1rem;
+    width:90%;
+    height:auto;
+    margin:5px auto;
     border-color: var(--font);
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px #000;
     box-shadow: 5px 10px 10px var(--shadow) ;
+    background: var(--font);
+    opacity:90%;
+    clear:both;
 }
 .testimonial_container__img{
     display:inline-block;
@@ -15,4 +22,12 @@
     display: inline-block;
     font-size:1rem;
     font-weight:100;
+}
+@media(min-width:43rem){
+    .testimonial_container{
+       
+        width:30%;
+       
+
+    }
 }

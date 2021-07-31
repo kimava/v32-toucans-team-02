@@ -1,12 +1,11 @@
 import React from 'react'
 import './Testomonial.css'
-import profileImg from '../../Assets/profileImg1.jpg'
 class Testomonial extends React.Component{
 render(){
     return (
         <div className="testimonial_container">
            <div>
-              <img className="testimonial_container__img" alt='profile' src={profileImg}/>
+              <img className="testimonial_container__img" alt='profile' src={this.props.imgUrl}/>
               <h3 className="testimonial_container__h3" alt="experince">My experince</h3>
            </div>
            

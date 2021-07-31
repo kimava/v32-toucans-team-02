@@ -1,7 +1,8 @@
 import React from 'react'
-import Layout from '../src/component/Layout/Layout'
+
 
 import './App.css'
+import Home from './component/Pages/Home/Home'
 
 
 class App extends React.Component{
@@ -10,9 +11,7 @@ class App extends React.Component{
     }
     render(){
         return(
-            <div id='main'  className='container'>
-                <Layout logedIn={this.state.logedIn}/>
-            </div>
+                <Home  logedIn={this.state.logedIn}/>
         )
     }
 }
