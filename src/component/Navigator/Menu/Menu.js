@@ -57,7 +57,8 @@ class Menu extends React.Component{
         this.setState({hideMenu:!this.state.hideMenu})
     }
     render(){
-        const menuItems =this.menu.map((item , index )=>(this.props.isLogedIn===item.isLogedIn)?<MenuItem key={index} link={`/${item.name}`}>{item.name}</MenuItem>:null)
+        console.log(this.props.logedIn)
+        const menuItems =this.menu.map((item , index )=>(this.props.logedIn===item.isLogedIn)?<MenuItem key={index} >{item.name}</MenuItem>:null)
         let icon =null
         if(this.state.width<=688)
             icon=  <i onClick={this.showHideMenuHadler}   className={this.state.hideMenu ? 'fa fa-bars ' : 'fa fa-times '} />
@@ -68,6 +69,7 @@ class Menu extends React.Component{
           <nav>
                 {icon}
                 <ul className={(this.state.hideMenu)?'hide_menu':'show_menu'}>
+                    
                     {menuItems}
                 </ul>
           </nav> 

@@ -6,7 +6,7 @@ class MenuItem extends React.Component{
 
         return(
             <li className="menu_item">
-                <a href={this.props.link}>
+                <a href={this.props.children}>
                     {this.props.children}
                 </a>
             </li>
