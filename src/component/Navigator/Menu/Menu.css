@@ -5,7 +5,8 @@
     top:3;
     right:0;
     width:50%;
-    background: var(--header-hover);
+    background: gray;
+    opacity:100%;
     display: flex;
     align-items: center;
     flex-flow: column;
@@ -20,7 +21,7 @@ i{
     top:2px;
     right:2px;
     z-index: 1000;
-    color:green;
+    color:#000;
 
 }
 @media(min-width:44rem){

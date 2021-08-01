@@ -7,7 +7,7 @@ import Home from './component/Pages/Home/Home'
 
 class App extends React.Component{
     state={
-        logedIn:false,
+        logedIn:true,
     }
     render(){
         return(

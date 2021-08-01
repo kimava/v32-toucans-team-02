@@ -5,14 +5,15 @@
     height:100%;
     align-items: center;
     list-style: none;
-    margin:0;
+    margin:1rem auto;
     text-align: center;
+    
 }
 .menu_item a{
     width:100%;
     text-align: center;
     box-sizing: border-box;
-    color:var(--header-link);
+    color: #000;
     display: block;
     padding: 30px 16px ;
     height:100%;
@@ -26,7 +27,6 @@
     height:auto;
     box-shadow: 5px 10px 10px var(--shadow) ;
     border-radius: 5px;
-    background: #114211;
     text-align: center;
 }
 .menu_item a :active ,.menu_item a:visited {
@@ -49,10 +49,9 @@
     height:auto;
     box-shadow: 5px 10px 10px var(--shadow) ;
     border-radius: 5px;
-    background: #114211;
 }
 .menu_item a :active ,.menu_item a:visited {
-    color:var(-header);
+    color:#000;
 }
 
 }

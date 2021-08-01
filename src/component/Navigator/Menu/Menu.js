@@ -36,36 +36,41 @@ class Menu extends React.Component{
         hideMenu:false,
     }
     componentDidMount(){
-        this.getScreenDimension()
+        window.addEventListener("resize", this.resize.bind(this));
+        window.addEventListener('scroll', this.resize.bind(this))
+        this.resize()
        
     }
-    getScreenDimension=()=>{
-       const  scrWidth=window.innerWidth
-        this.setState({
-        width:scrWidth,
-        })
-        if(this.state.width<688){
-            this.setState({hideMenu:true,})
-        }
+    componentWillUnmount(){
+        window.removeEventListener("resize", this.resize.bind(this));
+
+    }
+    closeMenuHandler(){
+        this.setState({hideMenu:true})
+    }
+    resize(){
+        this.setState({width:window.innerWidth})
+        this.setState({hideMenu: window.innerWidth <= 688})
+
     }
     showHideMenuHadler=()=>{
         this.setState({hideMenu:!this.state.hideMenu})
     }
     render(){
-        const menuItems = this.menu.map((item , index )=>(item.isLogedIn===this.props.logedIn)?<MenuItem key={index}>{item.name}</MenuItem>:null)
+        const menuItems =this.menu.map((item , index )=>(this.props.isLogedIn===item.isLogedIn)?<MenuItem key={index} link={`/${item.name}`}>{item.name}</MenuItem>:null)
         let icon =null
-        if(this.state.width<688)
-            icon=  <i onClick={this.showHideMenuHadler}  className={this.state.hideMenu ? 'fa fa-bars ' : 'fa fa-times '} />
+        if(this.state.width<=688)
+            icon=  <i onClick={this.showHideMenuHadler}   className={this.state.hideMenu ? 'fa fa-bars ' : 'fa fa-times '} />
         else
             icon=null
         return(
         
-          <div>
+          <nav>
                 {icon}
                 <ul className={(this.state.hideMenu)?'hide_menu':'show_menu'}>
                     {menuItems}
                 </ul>
-          </div> 
+          </nav> 
          
         
        
