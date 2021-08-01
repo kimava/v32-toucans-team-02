@@ -1,32 +1,34 @@
 import React from 'react'
 import MenuItem from '../MenuItem/MenuItem'
+
 import './Menu.css'
+
 
 class Menu extends React.Component{
     menu=[
         {
-            name:'Home', 
+            name:'Home',
             isLogedIn:false,
         },
         {
-            name:'Login', 
+            name:'Login',
             isLogedIn:false,
         }
         ,
         {
-            name:"Search", 
+            name:'MyProfile',
             isLogedIn:true,
         },
         {
-            name:"Profile", 
+            name:'Search', 
             isLogedIn:true,
         },
         {
-            name:"My Book list", 
+            name:'MyBooklist', 
             isLogedIn:true,
         }
         ,{
-            name:"Logout", 
+            name:"Logout",
             isLogedIn:true,
         }
     ]    
@@ -58,20 +60,21 @@ class Menu extends React.Component{
     }
     render(){
         console.log(this.props.logedIn)
-        const menuItems =this.menu.map((item , index )=>(this.props.logedIn===item.isLogedIn)?<MenuItem key={index} >{item.name}</MenuItem>:null)
+        const menuItems =this.menu.map((item , index )=>
+                    (this.props.logedIn===item.isLogedIn)?
+                            <MenuItem key={index}  link ={item.name.lower==='home'?'/':`/${item.name}`}> {item.name} </MenuItem>:null)
+        
         let icon =null
         if(this.state.width<=688)
             icon=  <i onClick={this.showHideMenuHadler}   className={this.state.hideMenu ? 'fa fa-bars ' : 'fa fa-times '} />
         else
             icon=null
         return(
-        
           <nav>
                 {icon}
-                <ul className={(this.state.hideMenu)?'hide_menu':'show_menu'}>
-                    
-                    {menuItems}
-                </ul>
+                    <ul className={(this.state.hideMenu)?'hide_menu':'show_menu'}>
+                        {menuItems}
+                    </ul>
           </nav> 
          
         

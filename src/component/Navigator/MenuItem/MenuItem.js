@@ -1,14 +1,14 @@
 import React from 'react'
 import './MenuItem.css'
+import { Link } from 'react-router-dom'
 
 class MenuItem extends React.Component{
     render(){
-
         return(
             <li className="menu_item">
-                <a href={this.props.children}>
+                <Link to={this.props.link}>
                     {this.props.children}
-                </a>
+                </Link>
             </li>
         )
     }

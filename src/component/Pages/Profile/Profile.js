@@ -6,7 +6,8 @@ class Profile extends React.Component{
     render(){
         return(
             <Layout>
-                <Header logedIn={this.props.logedIn}/>
+                 <Header logedIn={this.props.logedIn}/> 
+                <h2>Profile</h2>
             </Layout>
         )
     }
