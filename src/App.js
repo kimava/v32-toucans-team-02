@@ -3,7 +3,7 @@ import {BrowserRouter as Router , Switch  , Route} from 'react-router-dom'
 import Home from './component/Pages/Home/Home'
 import MyList from './component/Pages/MyList/MyList'
 import Profile from './component/Pages/Profile/Profile'
-import Search from './component/Pages/Search/Saerch'
+import Search from './component/Pages/Search/SaerchPage'
 import SignUp from './component/Pages/SignUp/SignUp'
 
 import './App.css'
@@ -25,7 +25,7 @@ class App extends React.Component{
                     <Profile logedIn={this.state.logedIn} /> 
                 </Route>
                 <Route path='/Login'  exact >
-                 
+                    <SignUp logedIn={this.state.logedIn}/>
                 </Route>
                 <Route path='/MyList'  exact>
                      <MyList  logedIn={this.state.logedIn} />
