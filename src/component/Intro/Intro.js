@@ -1,19 +1,35 @@
-import React from 'react'
-import './Intro.css'
-class Intro extends React.Component{
-    render(){
-        return(
-            <div className="intro_container">
-                <div className="intro_img_container">
-                </div>
-                <h2>Introduction </h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lorem felis, condimentum et pretium eu, venenatis vel ex. Maecenas mattis consequat libero eget facilisis. Fusce consequat laoreet eros sed aliquam. Phasellus molestie massa ultrices tempus mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi tincidunt massa orci, id viverra est facilisis et. Fusce mauris dui, ultrices non sapien laoreet, ultricies cursus ex. Donec imperdiet pellentesque augue eu tincidunt.</p>
-    
-            </div>
-            
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+import main from '../../Assets/main.png';
+import './Intro.css';
 
-           
-        )
-    }
-}
-export default Intro 
+const Intro = () => {
+  const history = useHistory();
+
+  const goToLogin = () => {
+    history.push('./Login');
+  };
+
+  return (
+    <div className='intro_container'>
+      <div className='intro'>
+        <h1 className='intro_title'>
+          the handiest way <br />
+          to create your book log
+        </h1>
+        <p className='intro_content'>
+          Make your own list of all the books <br />
+          you want to read and you love. <br />
+          Easily see what you've completed.
+        </p>
+        <button className='intro_button' onClick={goToLogin}>
+          Get Started
+        </button>
+      </div>
+
+      <img src={main} alt='main' className='intro_img' />
+    </div>
+  );
+};
+
+export default Intro;

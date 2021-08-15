@@ -6,7 +6,7 @@
     text-align: center;
 }
 input[type=search]{
-    background: url('../../../Assets/icons8-search-50.png') no-repeat scroll ;
+    background: url('../../../Assets/icon.png') no-repeat scroll ;
     background-color: white;
     width:80%;
     height:3rem;

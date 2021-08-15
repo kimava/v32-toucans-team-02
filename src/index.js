@@ -1,7 +1,13 @@
-import React from 'react'
-import  ReactDOM  from 'react-dom'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './App';
+import AuthService from './service/auth_service';
 
-import App from './App'
+const authService = new AuthService();
 
-ReactDOM.render(<App/ >, document.getElementById('root'))
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(
+  <React.StrictMode>
+    <App authService={authService} />
+  </React.StrictMode>,
+  document.getElementById('root')
+);

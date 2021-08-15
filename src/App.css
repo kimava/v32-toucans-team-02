@@ -1,20 +1,16 @@
-*{
-    box-sizing: border-box;
-    margin:0;
-    padding:0;
-    font-family: 'Caveat', cursive;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
 }
-body{
-    background: var(--back);
-}
-:root{
-    --header:#CBC26D;
-    --header-link:#fff;
-    --header-hover:#BCBCBC;
-    --back:#FFF59D;
-    --font:#BCBCBC;
-    --shadow:#888888;
-    
+:root {
+  --header: #cbc26d;
+  --header-link: #fff;
+  --header-hover: #bcbcbc;
+  --back: #ffffff;
+  --font: #bcbcbc;
+  --shadow: #888888;
 }
 /* .container{
     padding: 0;

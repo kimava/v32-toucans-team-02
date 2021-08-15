@@ -1,0 +1,9 @@
+.list_container{
+    width:90%;
+    margin:10px auto;
+    border:none;
+    box-shadow: 10px 10px 10px black;
+    height:auto;
+    display: grid;
+    grid-template-columns: repeat(3, 33%);
+}

@@ -1,0 +1,10 @@
+.container {
+  height: 100vh;
+}
+
+.loginBox {
+  margin: auto;
+  display: flex;
+  align-items: center;
+  height: 80vh;
+}
