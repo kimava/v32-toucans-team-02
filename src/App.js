@@ -2,7 +2,7 @@ import React from 'react'
 import {BrowserRouter as Router , Switch  , Route} from 'react-router-dom'
 import Home from './component/Pages/Home/Home'
 import MyList from './component/Pages/MyList/MyList'
-import Profile from './component/Pages/Profile/Profile'
+import ProfilePage from './component/Pages/ProfilePage/ProfilePage'
 import Search from './component/Pages/Search/SaerchPage'
 import SignUp from './component/Pages/SignUp/SignUp'
 
@@ -21,8 +21,8 @@ class App extends React.Component{
                 <Route path='/'  exact >
                     <Home logedIn={this.state.logedIn}/>
                 </Route>
-                <Route path='/profile '  exact >
-                    <Profile logedIn={this.state.logedIn} /> 
+                <Route path='/profile'  exact >
+                    <ProfilePage logedIn={this.state.logedIn} /> 
                 </Route>
                 <Route path='/Login'  exact >
                     <SignUp logedIn={this.state.logedIn}/>

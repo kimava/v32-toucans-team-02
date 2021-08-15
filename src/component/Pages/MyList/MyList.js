@@ -10,7 +10,7 @@ class MyList extends React.Component{
         return(
             <Layout>
                 <Header logedIn={this.props.logedIn}/>
-                <h2 style={sty} />
+                <h2 style={sty} >hi</h2>
             </Layout>
         )
     }

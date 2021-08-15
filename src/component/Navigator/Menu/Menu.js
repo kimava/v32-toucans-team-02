@@ -16,7 +16,7 @@ class Menu extends React.Component{
         }
         ,
         {
-            name:'MyProfile',
+            name:'Profile',
             isLogedIn:true,
         },
         {
@@ -59,7 +59,6 @@ class Menu extends React.Component{
         this.setState({hideMenu:!this.state.hideMenu})
     }
     render(){
-        console.log(this.props.logedIn)
         const menuItems =this.menu.map((item , index )=>
                     (this.props.logedIn===item.isLogedIn)?
                             <MenuItem key={index}  link ={item.name.lower==='home'?'/':`/${item.name}`}> {item.name} </MenuItem>:null)
