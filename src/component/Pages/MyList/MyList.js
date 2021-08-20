@@ -9,8 +9,10 @@ class MyList extends React.Component {
     };
     return (
       <Layout>
+       
         <Header logedIn={this.props.logedIn} />
         <h2 style={sty} >My List</h2>
+       
       </Layout>
     );
   }

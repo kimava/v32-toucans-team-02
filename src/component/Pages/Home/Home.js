@@ -9,7 +9,7 @@ class Home extends React.Component {
     return (
       <Layout>
         {console.log(this.props.logedIn)}
-        <Header logedIn={true} />
+        <Header logedIn={this.props.logedIn} />
         <Intro />
         <TestiomnialContainer />
       </Layout>

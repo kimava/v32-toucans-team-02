@@ -7,7 +7,7 @@ class SearchBar extends React.Component {
     render (){
         return (
             <form onSubmit={this.props.submit} className='search_bar' >
-                <input type='search' id="search" onKeyPress={this.props.search} />
+                <input type='search' id="search" onKeyPress={this.props.search}  />
             </form>
         )
     }
