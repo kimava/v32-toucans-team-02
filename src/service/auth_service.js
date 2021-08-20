@@ -1,27 +1,38 @@
-import React from 'react'
+import React from 'react';
 import { firebaseAuth, githubProvider, googleProvider } from './firebase';
-export const AuthContext =React.createContext({
-  user:null
-})
+export const AuthContext = React.createContext({
+  user: null,
+});
 class AuthService {
-  state ={
-    user:null
-  }
+  state = {
+    user: null,
+  };
   login(providerName) {
     const authProvider = this.getProvider(providerName);
-    return firebaseAuth.signInWithPopup(authProvider).then((result)=>{
-      this.setState({user:result.user})
+    return firebaseAuth.signInWithPopup(authProvider).then((result) => {
+      this.setState({ user: result.user });
     });
   }
 
   logout() {
     firebaseAuth.signOut();
-    this.setState({user:null})
+    this.setState({ user: null });
   }
 
   onAuthChange(onUserChange) {
     firebaseAuth.onAuthStateChanged((user) => {
       onUserChange(user);
+    });
+  }
+
+  getStatus() {
+    firebaseAuth.onAuthStateChanged((user) => {
+      if (user) {
+        const uid = user.uid;
+        console.log(`uid: ${uid}`);
+      } else {
+        console.log('logged out');
+      }
     });
   }
 

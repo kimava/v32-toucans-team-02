@@ -5,60 +5,50 @@ import MyList from './component/Pages/MyList/MyList';
 import Profile from './component/Pages/ProfilePage/ProfilePage';
 import Search from './component/Pages/Search/SaerchPage';
 import SignUp from './component/Pages/SignUp/SignUp';
-import ResultProvider from './component/Pages/Search/search-context'
+import ResultProvider from './component/Pages/Search/search-context';
 
 import './App.css';
-const App =(props)=>{
- const [loggedIn , setLoggedIn]=useState(false)
- useEffect(() => {
-  props.authService.onAuthChange((user) => {
- if(user){
-   setLoggedIn(true)
-   console.log(`loggedin user ${user}`)
- }
- else{
-  setLoggedIn(false)
-  console.log(`no one logged in  ${user}`)
- }
-   
-  })
-})
+const App = ({ authService }) => {
+  const [loggedIn, setLoggedIn] = useState(false);
+  // useEffect(() => {
+  //   authService.onAuthChange((user) => {
+  //     if (user) {
+  //       setLoggedIn(true);
+  //       console.log(`loggedin user ${user}`);
+  //     } else {
+  //       setLoggedIn(false);
+  //       console.log(`no one logged in  ${user}`);
+  //     }
+  //   });
+  // });
 
+  useEffect(() => {
+    authService.getStatus();
+  });
 
   return (
-   <ResultProvider>
-        <Router>
-          <Switch>
-            <Route path='/' exact>
-              <Home logedIn={loggedIn} 
-              authService={props.authService}
-              />
-            </Route>
-            <Route path='/profile ' exact>
-              <Profile logedIn={loggedIn} 
-              authService={props.authService}/>
-            </Route>
-            <Route path='/Login' exact>
-              <SignUp
-                logedIn={loggedIn}
-                authService={props.authService}
-              />
-            </Route>
-            <Route path='/MyList' exact>
-              <MyList logedIn={loggedIn} 
-              authService={props.authService}/>
-            </Route>
-            <Route path='/Search' exact>
-              <Search
-                logedIn={loggedIn}
-                authService={props.authService}
-              />
-            </Route>
-          </Switch>
+    <ResultProvider>
+      <Router>
+        <Switch>
+          <Route path='/' exact>
+            <Home logedIn={loggedIn} authService={authService} />
+          </Route>
+          <Route path='/profile ' exact>
+            <Profile logedIn={loggedIn} authService={authService} />
+          </Route>
+          <Route path='/Login' exact>
+            <SignUp logedIn={loggedIn} authService={authService} />
+          </Route>
+          <Route path='/MyList' exact>
+            <MyList logedIn={loggedIn} authService={authService} />
+          </Route>
+          <Route path='/Search' exact>
+            <Search logedIn={loggedIn} authService={authService} />
+          </Route>
+        </Switch>
       </Router>
-   
     </ResultProvider>
-  )
-}
+  );
+};
 
 export default App;
