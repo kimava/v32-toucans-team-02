@@ -25,10 +25,11 @@ class AuthService {
     });
   }
 
-  getStatus() {
+  getStatus(setUid) {
     firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         const uid = user.uid;
+        setUid(uid);
         console.log(`uid: ${uid}`);
       } else {
         console.log('logged out');

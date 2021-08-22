@@ -8,8 +8,9 @@ import SignUp from './component/Pages/SignUp/SignUp';
 import ResultProvider from './component/Pages/Search/search-context';
 
 import './App.css';
-const App = ({ authService }) => {
+const App = ({ authService, cardRepo }) => {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [userId, setUserId] = useState(null);
   // useEffect(() => {
   //   authService.onAuthChange((user) => {
   //     if (user) {
@@ -23,7 +24,7 @@ const App = ({ authService }) => {
   // });
 
   useEffect(() => {
-    authService.getStatus();
+    authService.getStatus(setUserId);
   });
 
   return (
@@ -40,10 +41,18 @@ const App = ({ authService }) => {
             <SignUp logedIn={loggedIn} authService={authService} />
           </Route>
           <Route path='/MyList' exact>
-            <MyList logedIn={loggedIn} authService={authService} />
+            <MyList
+              logedIn={loggedIn}
+              authService={authService}
+              cardRepo={cardRepo}
+            />
           </Route>
           <Route path='/Search' exact>
-            <Search logedIn={loggedIn} authService={authService} />
+            <Search
+              logedIn={loggedIn}
+              authService={authService}
+              cardRepo={cardRepo}
+            />
           </Route>
         </Switch>
       </Router>
