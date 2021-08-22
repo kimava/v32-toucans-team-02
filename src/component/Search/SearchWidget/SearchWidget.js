@@ -9,16 +9,17 @@ const SearchWidget = ({ userId, cardRepo }) => {
   const [selectedList, setSelectedList] = useState([]);
   const history = useHistory();
 
-  const trimList = (data) => {
+  const trimList = (data, bookId) => {
+    const id = bookId;
     const title = data.title;
     const author = data.authors;
     const imgUrl = data.imageLinks?.smallThumbnail;
     const Url = imgUrl ? imgUrl : null;
-    return { title, author, Url };
+    return { id, title, author, Url };
   };
 
-  const handleList = (data) => {
-    const info = trimList(data);
+  const handleList = (data, id) => {
+    const info = trimList(data, id);
     setSelectedList((prevSelectedList) => {
       const updated = [...prevSelectedList, info];
       return updated;
@@ -27,7 +28,6 @@ const SearchWidget = ({ userId, cardRepo }) => {
 
   useEffect(() => {
     cardRepo.saveCard(userId, selectedList);
-    console.log(selectedList);
   }, [selectedList]);
 
   const loadBooks = () => {
@@ -49,7 +49,7 @@ const SearchWidget = ({ userId, cardRepo }) => {
             <p>Published :{books[i].volumeInfo.publishedDate}</p>
             <button
               onClick={() => {
-                handleList(books[i].volumeInfo);
+                handleList(books[i].volumeInfo, books[i].id);
               }}
             >
               ADD to list
