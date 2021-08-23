@@ -20,15 +20,12 @@ const SearchWidget = ({ userId, cardRepo }) => {
 
   const handleList = (data, id) => {
     const info = trimList(data, id);
+    cardRepo.saveCard(userId, info.id, info);
     setSelectedList((prevSelectedList) => {
       const updated = [...prevSelectedList, info];
       return updated;
     });
   };
-
-  useEffect(() => {
-    cardRepo.saveCard(userId, selectedList);
-  }, [selectedList]);
 
   const loadBooks = () => {
     let books = bookResultContext.resultBooks;

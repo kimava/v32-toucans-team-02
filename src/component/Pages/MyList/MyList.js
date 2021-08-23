@@ -5,7 +5,7 @@ import Header from '../../Navigator/Header/Header';
 
 const MyList = ({ authService, cardRepo }) => {
   const [userId, setUserId] = useState(null);
-  const [cards, setCards] = useState([]);
+  const [cards, setCards] = useState({});
 
   useEffect(() => {
     authService.getStatus(setUserId);
@@ -15,15 +15,19 @@ const MyList = ({ authService, cardRepo }) => {
     if (!userId) {
       return;
     }
-    const stopFetch = cardRepo.fetchCards(userId, (cards) => {
-      setCards(cards);
+    const stopFetch = cardRepo.fetchCards(userId, (items) => {
+      setCards(items);
     });
     return () => stopFetch();
   }, [userId]);
 
   const deleteCard = (selected) => {
-    const updated = cards.filter((card) => card.id !== selected.id);
-    setCards(updated);
+    setCards((cards) => {
+      const updated = { ...cards };
+      delete updated[selected.id];
+      return updated;
+    });
+    cardRepo.removeCard(userId, selected.id);
   };
 
   return (
@@ -31,8 +35,8 @@ const MyList = ({ authService, cardRepo }) => {
       {/* <Header /> */}
       <h2>My List</h2>
       {cards &&
-        cards.map((card) => (
-          <Booklist key={card.id} card={card} deleteCard={deleteCard} />
+        Object.keys(cards).map((key) => (
+          <Booklist key={key} card={cards[key]} deleteCard={deleteCard} />
         ))}
     </div>
   );
