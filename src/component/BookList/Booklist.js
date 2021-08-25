@@ -1,6 +1,7 @@
 import React from 'react';
 import defaultImg from '../../Assets/unknownImage.png';
 import CustomizedRatings from '../UI/rating';
+import styles from './BookList.module.css';
 
 const Booklist = ({ card, deleteCard }) => {
   const { Url, title, author } = card;
@@ -8,18 +9,23 @@ const Booklist = ({ card, deleteCard }) => {
     deleteCard(card);
   };
   return (
-    <div>
-      <button onClick={onDelete}>X</button>
-      <img src={Url ? Url : defaultImg} />
-      <h1>{title}</h1>
-      <span>{author}</span>
-      <CustomizedRatings />
-      <select name='status'>
-        <option value='toRead'>to read</option>
-        <option value='reading'>reading</option>
-        <option value='read'>done</option>
-      </select>
-      <textarea name='comment' value=''></textarea>
+    <div className={styles.container}>
+      <button className={styles.deleteBtn} onClick={onDelete}>
+        <i class='fas fa-times'></i>
+      </button>
+      <img src={Url ? Url : defaultImg} className={styles.thumb} />
+      <h1 className={styles.title}>{title}</h1>
+      <span className={styles.author}>{author}</span>
+
+      <div className={styles.editor}>
+        <select name='status' className={styles.selector}>
+          <option value='toRead'>to read</option>
+          <option value='reading'>reading</option>
+          <option value='read'>done</option>
+        </select>
+        <CustomizedRatings />
+        <textarea name='comment' value='' className={styles.comment}></textarea>
+      </div>
     </div>
   );
 };

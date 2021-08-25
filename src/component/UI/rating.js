@@ -17,7 +17,7 @@ const StyledRating = withStyles({
 export default function CustomizedRatings() {
   return (
     <div>
-      <Box component='fieldset' mb={3} borderColor='transparent'>
+      <Box component='fieldset' mb={1} borderColor='transparent'>
         <StyledRating
           name='customized-color'
           defaultValue={0}
