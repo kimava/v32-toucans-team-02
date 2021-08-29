@@ -14,14 +14,19 @@ const StyledRating = withStyles({
   },
 })(Rating);
 
-export default function CustomizedRatings() {
+export default function CustomizedRatings({ key, preValue, getValue }) {
+  const onChange = (event) => {
+    const value = event.target.value;
+    getValue(value);
+  };
   return (
     <div>
       <Box component='fieldset' mb={1} borderColor='transparent'>
         <StyledRating
-          name='customized-color'
-          defaultValue={0}
+          name={key}
+          defaultValue={preValue ? preValue : 0}
           precision={0.5}
+          onChange={onChange}
           icon={<FavoriteIcon fontSize='inherit' />}
         />
       </Box>

@@ -1,3 +1,4 @@
+import { Save, SwapVerticalCircleRounded } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import Booklist from '../../BookList/Booklist';
 import Layout from '../../Layout/Layout';
@@ -31,6 +32,10 @@ const MyList = ({ authService, cardRepo }) => {
     cardRepo.removeCard(userId, selected.id);
   };
 
+  const addCard = (card) => {
+    cardRepo.saveCard(userId, card.id, card);
+  };
+
   return (
     <div>
       {/* <Header /> */}
@@ -38,7 +43,12 @@ const MyList = ({ authService, cardRepo }) => {
       <div className='card-container'>
         {cards &&
           Object.keys(cards).map((key) => (
-            <Booklist key={key} card={cards[key]} deleteCard={deleteCard} />
+            <Booklist
+              key={key}
+              card={cards[key]}
+              deleteCard={deleteCard}
+              addCard={addCard}
+            />
           ))}
       </div>
     </div>
