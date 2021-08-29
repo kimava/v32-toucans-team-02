@@ -32,6 +32,7 @@ class AuthService {
         setUid(uid);
         console.log(`uid: ${uid}`);
       } else {
+        setUid(null)
         console.log('logged out');
       }
     });

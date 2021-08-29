@@ -1,45 +1,47 @@
-import axios from 'axios'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../../Layout/Layout'
 import Header from '../../Navigator/Header/Header'
 import Profile from '../../Profile/Profile'
+import {firebaseDatabase} from '../../../service/firebase'
+import { Redirect } from "react-router-dom"
 
-class ProfilePage extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-            name:'',
-            lastName:'',
-            bookGenre:[],
-            profileImg:null,
-        }
 
-    }
-    submitedFormHandler=(formData)=>{
-        this.setState({name:formData.name})
-        this.setState({lastName:formData.lastName})
-        this.setState({bookGenre:formData.bookGenre})
-        this.setState({profileImg:formData.profileImg})
+const ProfilePage =(props)=>{
+    const [message, setMessage]=useState(null)
+
+   
+        
+  
+   const submitedFormHandler=(formData)=>{
         const profileData={
-            uid : 200 ,
+            uid : formData.uid ,
             name:formData.name,
             lastName:formData.lastName,
             bookGenre:formData.bookGenre, 
             profileImg:formData.profileImg,
         }
-        axios.post(`https://reactmain-d7740-default-rtdb.asia-southeast1.firebasedatabase.app/profileData.json`, profileData)
-        .then(response=>{
-            console.log(response)
-        }).catch(err=>console.log(err))
+        firebaseDatabase.ref('users/' + profileData.uid).set(profileData, (error) => {
+            if (error) {
+                setMessage('Your profile couldn\'t be Updated  ')
+            } else {
+               
+               setMessage('Your profile Updated sucessfuly ')
+            }
+          });
     }
-    render(){
+    /* if(!props.loggedIn){
+        return <Redirect to='/' exact/>
+     } */
         return(
-            <Layout>
-                 <Header logedIn={this.props.logedIn}/> 
-                <h2>Profile</h2>
-                <Profile submit={this.submitedFormHandler}/>
-            </Layout>
+            <>
+                <Layout>
+                    <Header logedIn={props.loggedIn}/> 
+                    <h2>Profile</h2>
+                    <Profile submit={submitedFormHandler} authService={props.authService} /> 
+                    <p style={{color:'gray', textAlign:'center'}}>{message}</p>
+                </Layout>
+            </>
         )
-    }
+   
 }
 export default ProfilePage

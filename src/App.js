@@ -11,36 +11,34 @@ import './App.css';
 const App = ({ authService, cardRepo }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
-  // useEffect(() => {
-  //   authService.onAuthChange((user) => {
-  //     if (user) {
-  //       setLoggedIn(true);
-  //       console.log(`loggedin user ${user}`);
-  //     } else {
-  //       setLoggedIn(false);
-  //       console.log(`no one logged in  ${user}`);
-  //     }
-  //   });
-  // });
 
   useEffect(() => {
     authService.getStatus(setUserId);
+
+    if(userId){
+      setLoggedIn(true)
+      
+    }
   });
+  
 
   return (
+  
     <ResultProvider>
+    
       <Router>
         <Switch>
           <Route path='/' exact>
             <Home logedIn={loggedIn} authService={authService} />
           </Route>
-          <Route path='/profile ' exact>
-            <Profile logedIn={loggedIn} authService={authService} />
+          <Route path='/profile' >
+          {console.log('App js uid', userId)}
+            <Profile loggedIn={loggedIn} authService={authService}  uid={userId} />
           </Route>
-          <Route path='/Login' exact>
+          <Route path='/Login' >
             <SignUp logedIn={loggedIn} authService={authService} />
           </Route>
-          <Route path='/MyList' exact>
+          <Route path='/MyList' >
             <MyList
               logedIn={loggedIn}
               authService={authService}
@@ -49,7 +47,7 @@ const App = ({ authService, cardRepo }) => {
           </Route>
           <Route path='/Search' exact>
             <Search
-              logedIn={loggedIn}
+              loggedIn={loggedIn}
               authService={authService}
               cardRepo={cardRepo}
             />
