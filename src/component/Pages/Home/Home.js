@@ -8,8 +8,8 @@ class Home extends React.Component {
   render() {
     return (
       <Layout>
-        {console.log(this.props.logedIn)}
-        <Header logedIn={this.props.logedIn} />
+        {console.log(this.props.loggedIn)}
+        <Header logedIn={this.props.loggedIn} />
         <Intro />
         <TestiomnialContainer />
       </Layout>

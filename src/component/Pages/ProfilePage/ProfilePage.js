@@ -8,10 +8,8 @@ import { Redirect } from "react-router-dom"
 
 const ProfilePage =(props)=>{
     const [message, setMessage]=useState(null)
-
+    console.log(props.uid)
    
-        
-  
    const submitedFormHandler=(formData)=>{
         const profileData={
             uid : formData.uid ,
@@ -37,7 +35,7 @@ const ProfilePage =(props)=>{
                 <Layout>
                     <Header logedIn={props.loggedIn}/> 
                     <h2>Profile</h2>
-                    <Profile submit={submitedFormHandler} authService={props.authService} /> 
+                    <Profile submit={submitedFormHandler}  uid={props.uid} /> 
                     <p style={{color:'gray', textAlign:'center'}}>{message}</p>
                 </Layout>
             </>
