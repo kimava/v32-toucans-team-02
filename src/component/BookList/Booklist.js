@@ -47,10 +47,13 @@ const Booklist = ({ key, card, deleteCard, addCard }) => {
           <option value='read'>done</option>
         </select>
         <CustomizedRatings key={key} getValue={getValue} preValue={rate} />
+
         <textarea name='comment' className={styles.comment} ref={commentRef}>
           {comment ? comment : ''}
         </textarea>
-        <button onClick={onSave}>Save</button>
+        <button className={styles.saveBtn} onClick={onSave}>
+          save
+        </button>
       </div>
     </div>
   );

@@ -38,8 +38,7 @@ const MyList = ({ authService, cardRepo }) => {
 
   return (
     <div>
-      {/* <Header /> */}
-      <h2>My List</h2>
+      <Header />
       <div className='card-container'>
         {cards &&
           Object.keys(cards).map((key) => (

@@ -13,7 +13,7 @@ const SearchWidget = ({ userId, cardRepo }) => {
     const id = bookId;
     const title = data.title;
     const author = data.authors;
-    const imgUrl = data.imageLinks?.smallThumbnail;
+    const imgUrl = data.imageLinks?.thumbnail;
     const Url = imgUrl ? imgUrl : null;
     return { id, title, author, Url };
   };
@@ -34,7 +34,7 @@ const SearchWidget = ({ userId, cardRepo }) => {
       for (let i in books) {
         let imgsrc = '/Assets/unknownImage.png';
         try {
-          imgsrc = books[i].volumeInfo.imageLinks.smallThumbnail;
+          imgsrc = books[i].volumeInfo.imageLinks.thumbnail;
         } catch (err) {
           imgsrc = img;
         }
