@@ -5,6 +5,7 @@ import Header from '../../Navigator/Header/Header';
 import SearchBar from '../../Search/SearchBar/SeachBar';
 import SearchWidget from '../../Search/SearchWidget/SearchWidget';
 import { SearchContext } from './search-context';
+import './SearchPage.css';
 
 const Search = ({ logedIn, authService, cardRepo }) => {
   const bookResultContext = useContext(SearchContext);

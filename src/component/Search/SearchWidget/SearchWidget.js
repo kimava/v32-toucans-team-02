@@ -39,17 +39,25 @@ const SearchWidget = ({ userId, cardRepo }) => {
           imgsrc = img;
         }
         let element = (
-          <div key={i}>
-            <img src={imgsrc} alt={books[i].volumeInfo.title} />
-            <p>Title :{books[i].volumeInfo.title}</p>
-            <p>Autor :{books[i].volumeInfo.authors}</p>
-            <p>Published :{books[i].volumeInfo.publishedDate}</p>
+          <div key={i} className='book_card'>
+            <img
+              src={imgsrc}
+              alt={books[i].volumeInfo.title}
+              className='book_img'
+            />
+            <p>{books[i].volumeInfo.title}</p>
+            <p className='book_author'>
+              {books[i].volumeInfo.authors
+                ? books[i].volumeInfo.authors
+                : 'unknown'}
+            </p>
             <button
+              className='add_btn'
               onClick={() => {
                 handleList(books[i].volumeInfo, books[i].id);
               }}
             >
-              ADD to list
+              Add to list
             </button>
           </div>
         );
