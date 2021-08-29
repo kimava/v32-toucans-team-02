@@ -5,10 +5,7 @@ import './Menu.css';
 
 class Menu extends React.Component {
   menu = [
-    {
-      name: 'Home',
-      isLogedIn: false,
-    },
+  
     {
       name: 'Login',
       isLogedIn: false,
@@ -51,11 +48,14 @@ class Menu extends React.Component {
   }
 
   resize() {
+    
     this.setState({ width: window.innerWidth });
     this.setState({ hideMenu: window.innerWidth <= 688 });
+    console.log(this.state.hideMenu)
   }
 
   showHideMenuHadler = () => {
+    console.log(this.state.hideMenu)
     this.setState({ hideMenu: !this.state.hideMenu });
   };
 
@@ -65,7 +65,7 @@ class Menu extends React.Component {
       this.props.logedIn === item.isLogedIn ? (
         <MenuItem
           key={index}
-          link={item.name == 'Home' ? '/' : `/${item.name}`}
+          link={`/${item.name}`}
         >
           {item.name}
         </MenuItem>

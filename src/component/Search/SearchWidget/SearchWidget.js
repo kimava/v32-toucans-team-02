@@ -13,22 +13,19 @@ const SearchWidget = ({ userId, cardRepo }) => {
     const id = bookId;
     const title = data.title;
     const author = data.authors;
-    const imgUrl = data.imageLinks?.smallThumbnail;
+    const imgUrl = data.imageLinks?.thumbnail;
     const Url = imgUrl ? imgUrl : null;
     return { id, title, author, Url };
   };
 
   const handleList = (data, id) => {
     const info = trimList(data, id);
+    cardRepo.saveCard(userId, info.id, info);
     setSelectedList((prevSelectedList) => {
       const updated = [...prevSelectedList, info];
       return updated;
     });
   };
-
-  useEffect(() => {
-    cardRepo.saveCard(userId, selectedList);
-  }, [selectedList]);
 
   const loadBooks = () => {
     let books = bookResultContext.resultBooks;
@@ -37,22 +34,30 @@ const SearchWidget = ({ userId, cardRepo }) => {
       for (let i in books) {
         let imgsrc = '/Assets/unknownImage.png';
         try {
-          imgsrc = books[i].volumeInfo.imageLinks.smallThumbnail;
+          imgsrc = books[i].volumeInfo.imageLinks.thumbnail;
         } catch (err) {
           imgsrc = img;
         }
         let element = (
-          <div key={i}>
-            <img src={imgsrc} alt={books[i].volumeInfo.title} />
-            <p>Title :{books[i].volumeInfo.title}</p>
-            <p>Autor :{books[i].volumeInfo.authors}</p>
-            <p>Published :{books[i].volumeInfo.publishedDate}</p>
+          <div key={i} className='book_card'>
+            <img
+              src={imgsrc}
+              alt={books[i].volumeInfo.title}
+              className='book_img'
+            />
+            <p>{books[i].volumeInfo.title}</p>
+            <p className='book_author'>
+              {books[i].volumeInfo.authors
+                ? books[i].volumeInfo.authors
+                : 'unknown'}
+            </p>
             <button
+              className='add_btn'
               onClick={() => {
                 handleList(books[i].volumeInfo, books[i].id);
               }}
             >
-              ADD to list
+              Add to list
             </button>
           </div>
         );

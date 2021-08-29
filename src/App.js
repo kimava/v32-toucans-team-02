@@ -39,7 +39,7 @@ const App = ({ authService, cardRepo }) => {
           </Route>
           <Route path='/MyList' >
             <MyList
-              logedIn={loggedIn}
+              loggedIn={loggedIn}
               authService={authService}
               cardRepo={cardRepo}
             />
