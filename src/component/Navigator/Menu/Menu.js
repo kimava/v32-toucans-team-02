@@ -55,9 +55,14 @@ class Menu extends React.Component {
   }
 
   showHideMenuHadler = () => {
-    console.log(this.state.hideMenu)
-    this.setState({ hideMenu: !this.state.hideMenu });
+    if(window.innerWidth<=668){
+      console.log(this.state.hideMenu)
+      this.setState({ hideMenu: !this.state.hideMenu });
+    }else {
+      this.setState({ hideMenu: false });
+    }
   };
+
 
   render() {
   
@@ -76,14 +81,13 @@ class Menu extends React.Component {
     if (this.state.width <= 688)
       icon = (
         <i
-          onClick={this.showHideMenuHadler}
           className={this.state.hideMenu ? 'fa fa-bars ' : 'fa fa-times '}
         />
       );
     else icon = null;
 
     return (
-      <nav className='navbar'>
+      <nav className='navbar' onClick={this.showHideMenuHadler}>
         {icon}
         <ul className={this.state.hideMenu ? 'hide_menu' : 'show_menu'}>
           {menuItems}
