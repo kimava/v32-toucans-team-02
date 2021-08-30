@@ -62,7 +62,6 @@ class Menu extends React.Component {
 
 
   render() {
-  
     const menuItems = this.menu.map((item, index) =>
       this.props.logedIn === item.isLogedIn ? (
         <MenuItem
@@ -75,7 +74,7 @@ class Menu extends React.Component {
     );
 
     let icon = null;
-    if (this.state.width <= 688)
+    if (this.state.width <= 770)
       icon = (
         <i
           className={this.state.hideMenu ? 'fa fa-bars ' : 'fa fa-times '}
