@@ -48,15 +48,12 @@ class Menu extends React.Component {
   }
 
   resize() {
-    
     this.setState({ width: window.innerWidth });
-    this.setState({ hideMenu: window.innerWidth <= 688 });
-    console.log(this.state.hideMenu)
+    this.setState({ hideMenu: window.innerWidth <= 770 });
   }
 
   showHideMenuHadler = () => {
-    if(window.innerWidth<=668){
-      console.log(this.state.hideMenu)
+    if(window.innerWidth<=770){
       this.setState({ hideMenu: !this.state.hideMenu });
     }else {
       this.setState({ hideMenu: false });

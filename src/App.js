@@ -29,9 +29,7 @@ const App = ({ authService, cardRepo }) => {
             <Home loggedIn={loggedIn} authService={authService} />
           </Route>
           <Route path='/profile' >
-          {console.log('in router:',userId)}
             <Profile loggedIn={loggedIn} authService={authService}
-          
             uid={userId} />
           </Route>
           <Route path='/Login' >

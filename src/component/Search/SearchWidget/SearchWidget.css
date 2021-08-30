@@ -1,7 +1,7 @@
 .list_container {
   margin: 1rem auto;
   display: grid;
-  grid-template-columns: repeat(3, 33%);
+  grid-template-columns: 100%;
   justify-content: center;
   width: 90%;
   height: auto;
@@ -44,4 +44,11 @@
 .add_btn:hover {
   transform: scale(1.05);
   background-color: #fff176;
+}
+@media(min-width:48rem){
+  .list_container {
+   
+    grid-template-columns: repeat(3, 33%);
+   
+  }
 }

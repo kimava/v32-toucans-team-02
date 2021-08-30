@@ -30,7 +30,6 @@ class AuthService {
       if (user) {
         const uid = user.uid;
         setUid(uid);
-        console.log(`uid: ${uid}`);
       } else {
         setUid(null)
         console.log('logged out');

@@ -43,6 +43,7 @@
   }
 
   .intro_title {
-    font: 2.5rem;
+    margin-top: 4rem;
+    font-size: 1.5rem;
   }
 }

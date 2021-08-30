@@ -9,8 +9,7 @@ const authService = new AuthService();
 const cardRepo = new CardRepo();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App authService={authService} cardRepo={cardRepo} />
-  </React.StrictMode>,
+
+    <App authService={authService} cardRepo={cardRepo} />,
   document.getElementById('root')
 );
