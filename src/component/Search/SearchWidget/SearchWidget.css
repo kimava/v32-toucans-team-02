@@ -45,10 +45,58 @@
   transform: scale(1.05);
   background-color: #fff176;
 }
-@media(min-width:48rem){
+
+.popUp {
+  padding: 2rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 30rem;
+  height: 15rem;
+  text-align: center;
+  background-color: #ffffff;
+  border: 1px solid gray;
+  transform: translate(-50%, -50%);
+}
+
+.popUp_close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.popUp_comment {
+  margin-bottom: 2rem;
+}
+
+.popUp_btn {
+  margin-right: 1rem;
+  padding: 1rem 0.5rem;
+  width: 8rem;
+  background-color: #fff59d;
+  border: 0;
+  border-radius: 4px;
+}
+
+.popUp_btn:hover {
+  background-color: #fff176;
+}
+
+.popUp_btn:last-child {
+  margin-right: 0;
+}
+
+@media (min-width: 48rem) {
   .list_container {
-   
     grid-template-columns: repeat(3, 33%);
-   
   }
 }

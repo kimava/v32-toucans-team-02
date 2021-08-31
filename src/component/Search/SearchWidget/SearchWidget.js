@@ -7,6 +7,7 @@ import { useHistory } from 'react-router';
 const SearchWidget = ({ userId, cardRepo }) => {
   const bookResultContext = useContext(SearchContext);
   const [selectedList, setSelectedList] = useState([]);
+  const [close, setClose] = useState(false);
   const history = useHistory();
 
   const trimList = (data, bookId) => {
@@ -25,6 +26,17 @@ const SearchWidget = ({ userId, cardRepo }) => {
       const updated = [...prevSelectedList, info];
       return updated;
     });
+    setClose(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const handleClose = () => {
+    setClose(false);
+    document.body.style.overflow = 'unset';
+  };
+
+  const handleMove = () => {
+    history.push('/MyList');
   };
 
   const loadBooks = () => {
@@ -67,7 +79,27 @@ const SearchWidget = ({ userId, cardRepo }) => {
     return listElements;
   };
 
-  return <div className='list_container'>{loadBooks()}</div>;
+  return (
+    <div>
+      <div className='list_container'>{loadBooks()}</div>
+      {close && (
+        <div className='popUp' onClick={handleClose}>
+          <button className='popUp_close'>
+            <i class='fas fa-times'></i>
+          </button>
+          <p className='popUp_comment'>we saved it to your list! 🎉</p>
+          <div className='popUp_selector'>
+            <button className='popUp_btn popUp_stay' onClick={handleClose}>
+              keep searching
+            </button>
+            <button className='popUp_btn popUp_move' onClick={handleMove}>
+              go to my list
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default SearchWidget;
