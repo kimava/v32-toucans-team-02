@@ -7,6 +7,8 @@ const Booklist = ({ key, card, deleteCard, addCard }) => {
   const statusRef = useRef();
   const commentRef = useRef();
   const [rating, setRating] = useState(null);
+  const [toggle, setToggle] = useState(true);
+  const [disabled, setDisabled] = useState(false);
   const { Url, title, author, status, rate, comment } = card;
   const onDelete = (event) => {
     deleteCard(card);
@@ -20,6 +22,19 @@ const Booklist = ({ key, card, deleteCard, addCard }) => {
       comment: commentRef.current.value || '',
     };
     addCard(newcard);
+  };
+
+  const handleToggle = (event) => {
+    if (toggle) {
+      setToggle(false);
+      event.target.innerHTML = 'edit';
+      setDisabled(true);
+      onSave(event);
+    } else {
+      event.target.innerHTML = 'save';
+      setToggle(true);
+      setDisabled(false);
+    }
   };
 
   const getValue = (value) => {
@@ -48,10 +63,15 @@ const Booklist = ({ key, card, deleteCard, addCard }) => {
         </select>
         <CustomizedRatings key={key} getValue={getValue} preValue={rate} />
 
-        <textarea name='comment' className={styles.comment} ref={commentRef}>
+        <textarea
+          name='comment'
+          className={styles.comment}
+          ref={commentRef}
+          disabled={disabled}
+        >
           {comment ? comment : ''}
         </textarea>
-        <button className={styles.saveBtn} onClick={onSave}>
+        <button className={styles.saveBtn} onClick={handleToggle}>
           save
         </button>
       </div>
