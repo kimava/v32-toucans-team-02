@@ -3,13 +3,13 @@ import defaultImg from '../../Assets/unknownImage.png';
 import CustomizedRatings from '../UI/rating';
 import styles from './BookList.module.css';
 
-const Booklist = ({ key, card, deleteCard, addCard }) => {
+const Booklist = ({ card, deleteCard, addCard }) => {
   const statusRef = useRef();
   const commentRef = useRef();
   const [rating, setRating] = useState(null);
   const [toggle, setToggle] = useState(true);
   const [disabled, setDisabled] = useState(false);
-  const { Url, title, author, status, rate, comment } = card;
+  const { Url, title, author, status, rate, comment, id } = card;
   const onDelete = (event) => {
     deleteCard(card);
   };
@@ -18,7 +18,7 @@ const Booklist = ({ key, card, deleteCard, addCard }) => {
     const newcard = {
       ...card,
       status: statusRef.current.value || '',
-      rate: rating || 0,
+      rate: rating * 1 || 0,
       comment: commentRef.current.value || '',
     };
     addCard(newcard);
@@ -38,15 +38,16 @@ const Booklist = ({ key, card, deleteCard, addCard }) => {
   };
 
   const getValue = (value) => {
-    setRating(value);
+    const number = value * 1;
+    setRating(number);
   };
 
   return (
     <div className={styles.container}>
       <button className={styles.deleteBtn} onClick={onDelete}>
-        <i class='fas fa-times'></i>
+        <i className='fas fa-times'></i>
       </button>
-      <img src={Url ? Url : defaultImg} className={styles.thumb} />
+      <img src={Url ? Url : defaultImg} alt={title} className={styles.thumb} />
       <h1 className={styles.title}>{title}</h1>
       <span className={styles.author}>{author}</span>
 
@@ -61,16 +62,16 @@ const Booklist = ({ key, card, deleteCard, addCard }) => {
           <option value='reading'>reading</option>
           <option value='read'>done</option>
         </select>
-        <CustomizedRatings key={key} getValue={getValue} preValue={rate} />
+        <CustomizedRatings id={id} getValue={getValue} preValue={rate * 1} />
 
         <textarea
           name='comment'
           className={styles.comment}
           ref={commentRef}
           disabled={disabled}
-        >
-          {comment ? comment : ''}
-        </textarea>
+          defaultValue={comment ? comment : ''}
+        />
+
         <button className={styles.saveBtn} onClick={handleToggle}>
           save
         </button>

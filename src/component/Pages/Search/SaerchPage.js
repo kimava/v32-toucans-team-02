@@ -7,19 +7,14 @@ import SearchWidget from '../../Search/SearchWidget/SearchWidget';
 import { SearchContext } from './search-context';
 import './SearchPage.css';
 
-
-
 const Search = ({ loggedIn, authService, cardRepo }) => {
-
   const bookResultContext = useContext(SearchContext);
   const [searchValue, setSearchValue] = useState('');
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    
     authService.getStatus(setUserId);
-  
-  });
+  }, [authService]);
 
   const getSearchValueHandler = (e) => {
     setSearchValue(e.target.value);
@@ -28,7 +23,7 @@ const Search = ({ loggedIn, authService, cardRepo }) => {
   const searchHandler = (e) => {
     e.preventDefault();
     //Max result indicates the amximum results of search Max number is 40
-    
+
     axios
       .get(`${searchValue}&maxResults=40`)
       .then((response) => {
@@ -43,7 +38,11 @@ const Search = ({ loggedIn, authService, cardRepo }) => {
   return (
     <Layout>
       <Header logedIn={loggedIn} />
-      <SearchBar submit={searchHandler} search={getSearchValueHandler}  loggedIn={loggedIn}/>
+      <SearchBar
+        submit={searchHandler}
+        search={getSearchValueHandler}
+        loggedIn={loggedIn}
+      />
       <SearchWidget cardRepo={cardRepo} userId={userId} />
     </Layout>
   );

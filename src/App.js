@@ -11,31 +11,31 @@ import './App.css';
 const App = ({ authService, cardRepo }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
-  authService.getStatus(setUserId)
-   useEffect(() => {
-    if(userId){
-      setLoggedIn(true)
+  authService.getStatus(setUserId);
+  useEffect(() => {
+    if (userId) {
+      setLoggedIn(true);
     }
-  }); 
-  
+  }, [userId]);
 
   return (
-  
     <ResultProvider>
-    
       <Router>
         <Switch>
           <Route path='/' exact>
             <Home loggedIn={loggedIn} authService={authService} />
           </Route>
-          <Route path='/profile' >
-            <Profile loggedIn={loggedIn} authService={authService}
-            uid={userId} />
+          <Route path='/profile'>
+            <Profile
+              loggedIn={loggedIn}
+              authService={authService}
+              uid={userId}
+            />
           </Route>
-          <Route path='/Login' >
+          <Route path='/Login'>
             <SignUp logedIn={loggedIn} authService={authService} />
           </Route>
-          <Route path='/MyList' >
+          <Route path='/MyList'>
             <MyList
               loggedIn={loggedIn}
               authService={authService}

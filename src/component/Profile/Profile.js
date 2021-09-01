@@ -5,7 +5,7 @@ import { firebaseDatabase, firebaseStorage } from '../../service/firebase';
 
 const type = ['image/png', 'image/jpeg'];
 const Profile = ({ submit, uid }) => {
-  const [userId, setUserId] = useState(null);
+  // const [userId, setUserId] = useState(null);
   const [isLoaded, setIsloaded] = useState(false);
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -24,20 +24,17 @@ const Profile = ({ submit, uid }) => {
     dbRef.on('value', (snapshot) => {
       if (snapshot.exists()) {
         let data = snapshot.val();
-        console.log(`I'm data ${data.name}`);
         //setUid(data.uid)
         setName(data.name);
         setLastName(data.lastName);
         setBookGenre(data.bookGenre);
         setProfileImg(data.profileImg);
-        console.log('data profile img :', data.profileImg);
         if (data.profileImg === '') {
           data.profileImg =
             'https://firebasestorage.googleapis.com/v0/b/booklog-15241.appspot.com/o/Unknown_person.jpg?alt=media&token=76fdd940-398b-44e7-b82f-fbbedefb900c';
         }
         setIsloaded(true);
       } else {
-        console.log("snapshot didn't exist");
         return null;
       }
     });

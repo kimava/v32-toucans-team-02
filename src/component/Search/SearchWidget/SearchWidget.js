@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import './SearchWidget.css';
 import { SearchContext } from '../../Pages/Search/search-context';
 import img from '../../../Assets/unknownImage.png';
@@ -85,7 +85,7 @@ const SearchWidget = ({ userId, cardRepo }) => {
       {close && (
         <div className='popUp' onClick={handleClose}>
           <button className='popUp_close'>
-            <i class='fas fa-times'></i>
+            <i className='fas fa-times'></i>
           </button>
           <p className='popUp_comment'>we saved it to your list! 🎉</p>
           <div className='popUp_selector'>

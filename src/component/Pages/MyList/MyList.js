@@ -1,17 +1,15 @@
-import { Save, SwapVerticalCircleRounded } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import Booklist from '../../BookList/Booklist';
-import Layout from '../../Layout/Layout';
 import Header from '../../Navigator/Header/Header';
 import './MyList.css';
 
-const MyList = ({ authService, cardRepo , loggedIn }) => {
+const MyList = ({ authService, cardRepo, loggedIn }) => {
   const [userId, setUserId] = useState(null);
   const [cards, setCards] = useState({});
 
   useEffect(() => {
     authService.getStatus(setUserId);
-  });
+  }, [authService]);
 
   useEffect(() => {
     if (!userId) {
@@ -21,7 +19,7 @@ const MyList = ({ authService, cardRepo , loggedIn }) => {
       setCards(items);
     });
     return () => stopFetch();
-  }, [userId]);
+  }, [userId, cardRepo]);
 
   const deleteCard = (selected) => {
     setCards((cards) => {
@@ -38,13 +36,13 @@ const MyList = ({ authService, cardRepo , loggedIn }) => {
 
   return (
     <div>
-       <Header logedIn={loggedIn}/> 
+      <Header logedIn={loggedIn} />
       <div className='card-container'>
         {cards &&
-          Object.keys(cards).map((key) => (
+          Object.keys(cards).map((item) => (
             <Booklist
-              key={key}
-              card={cards[key]}
+              key={cards[item].id}
+              card={cards[item]}
               deleteCard={deleteCard}
               addCard={addCard}
             />
