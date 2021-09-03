@@ -3,7 +3,7 @@
 ## Overview
 This app was created for the Chingu Voyage 32 team project. It pulls data from [Google Books API](https://developers.google.com/books)
 
-LIVE LINK:
+LIVE LINK: https://bookishlist.netlify.app/
 
 
 ## `Features`
