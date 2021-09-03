@@ -1,8 +1,6 @@
 import React from 'react';
 import MenuItem from '../menu-item/menu-item';
-
 import './Menu.css';
-
 class Menu extends React.Component {
   menu = [
   
@@ -59,20 +57,21 @@ class Menu extends React.Component {
       this.setState({ hideMenu: false });
     }
   };
-
-
+ 
   render() {
-    const menuItems = this.menu.map((item, index) =>
-      this.props.logedIn === item.isLogedIn ? (
-        <MenuItem
+    const menuItems = this.menu.map((item, index) =>{
+      if( this.props.logedIn === item.isLogedIn ){
+     
+          return <MenuItem
           key={index}
-          link={`/${item.name}`}
-        >
+          link={`${item.name}`}
+          >
           {item.name}
-        </MenuItem>
-      ) : null
-    );
-
+        </MenuItem> 
+      }else{
+        return null 
+      }
+    })
     let icon = null;
     if (this.state.width <= 770)
       icon = (

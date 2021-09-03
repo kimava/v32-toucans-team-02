@@ -8,7 +8,7 @@ class Home extends React.Component {
   render() {
     return (
       <Layout>
-        <Header logedIn={this.props.loggedIn} />
+        <Header logedIn={this.props.loggedIn} authService={this.props.authService} />
         <Intro />
         <TestiomnialContainer />
       </Layout>

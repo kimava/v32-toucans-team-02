@@ -7,7 +7,7 @@ import logo from '../../../Assets/book.png';
 class Header extends React.Component {
   render() {
     return (
-      <header className='header'>
+      <header className='header'  authservice={this.props.authservice}>
         {this.props.onLogout && (
           <button onClick={this.props.onLogout} className='logout'>
             Logout
@@ -15,7 +15,7 @@ class Header extends React.Component {
         )}
         <img src={logo} alt='Logo' className='header_logo' />
 
-        <Menu logedIn={this.props.logedIn} />
+        <Menu logedIn={this.props.logedIn}  authservice={this.props.authservice}/>
       </header>
     );
   }

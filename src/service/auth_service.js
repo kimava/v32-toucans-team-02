@@ -1,26 +1,18 @@
-import React from 'react';
 import { firebaseAuth, githubProvider, googleProvider } from './firebase';
-export const AuthContext = React.createContext({
-  user: null,
-});
-class AuthService {
-  state = {
-    user: null,
-  };
+import { useHistory } from "react-router-dom";
+class AuthService  {
+
   login(providerName) {
     const authProvider = this.getProvider(providerName);
-    return firebaseAuth.signInWithPopup(authProvider).then((result) => {
-      this.setState({ user: result.user });
-    });
+    return firebaseAuth.signInWithPopup(authProvider)
   }
-
+ 
   logout() {
-    firebaseAuth.signOut();
-    this.setState({ user: null });
+   firebaseAuth.signOut()
   }
 
   onAuthChange(onUserChange) {
-    firebaseAuth.onAuthStateChanged((user) => {
+   firebaseAuth.onAuthStateChanged((user) => {
       onUserChange(user);
     });
   }
@@ -32,7 +24,6 @@ class AuthService {
         setUid(uid);
       } else {
         setUid(null)
-        console.log('logged out');
       }
     });
   }

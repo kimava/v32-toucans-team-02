@@ -37,7 +37,7 @@ const Search = ({ loggedIn, authService, cardRepo }) => {
   };
   return (
     <Layout>
-      <Header logedIn={loggedIn} />
+      <Header logedIn={loggedIn} authService={authService} />
       <SearchBar
         submit={searchHandler}
         search={getSearchValueHandler}
