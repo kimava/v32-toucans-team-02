@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import './SearchWidget.css';
-import { SearchContext } from '../../Pages/Search/search-context';
+import { SearchContext } from '../../../Pages/Search/search-context';
 import img from '../../../Assets/unknownImage.png';
 import { useHistory } from 'react-router';
 

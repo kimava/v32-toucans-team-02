@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../../Navigator/Header/Header';
-import Login from '../../Login/Login';
+import Header from '../../component/Navigator/Header/Header';
+import Login from '../../component/Login/Login';
 import styles from './signup.module.css';
 
 class SignUp extends React.Component {

@@ -1,28 +1,26 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Home from './component/Pages/Home/Home';
-import MyList from './component/Pages/MyList/MyList';
-import Profile from './component/Pages/ProfilePage/ProfilePage';
-import Search from './component/Pages/Search/SaerchPage';
-import SignUp from './component/Pages/SignUp/SignUp';
-import ResultProvider from './component/Pages/Search/search-context';
+import Home from './Pages/Home/Home';
+import MyList from './Pages/MyList/MyList';
+import Profile from './Pages/ProfilePage/ProfilePage';
+import Search from './Pages/Search/SaerchPage';
+import SignUp from './Pages/SignUp/SignUp';
+import ResultProvider from './Pages/Search/search-context';
 
 import './App.css';
 import Logout from './component/Logout/Logout';
 const App = ({ authService, cardRepo }) => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [userId, setUserId] = useState(null);
- authService.getStatus(setUserId);
+  authService.getStatus(setUserId);
   useEffect(() => {
     if (userId) {
-      console.log("App.js",userId)
+      console.log('App.js', userId);
+      setLoggedIn(true);
+    } else {
       setLoggedIn(true);
     }
-    else{
-      setLoggedIn(false)
-    }
-  },[userId,authService]);
-
+  }, [userId, authService]);
 
   return (
     <ResultProvider>
@@ -54,10 +52,8 @@ const App = ({ authService, cardRepo }) => {
               authService={authService}
               cardRepo={cardRepo}
             />
-            
           </Route>
-          <Route 
-          path="/Logout" >
+          <Route path='/Logout'>
             <Logout loggedIn={loggedIn} authService={authService} />
           </Route>
         </Switch>

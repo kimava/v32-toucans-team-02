@@ -1,18 +1,17 @@
 import React, { useState } from 'react';
-import Layout from '../../Layout/Layout';
-import Header from '../../Navigator/Header/Header';
-import Profile from '../../Profile/Profile';
-import { firebaseDatabase } from '../../../service/firebase';
+import Layout from '../../component/Layout/Layout';
+import Header from '../../component/Navigator/Header/Header';
+import Profile from '../../component/Profile/Profile';
+import { firebaseDatabase } from '../../service/firebase';
 import { useHistory } from 'react-router';
-
 
 const ProfilePage = (props) => {
   const [message, setMessage] = useState(null);
-  console.log('profilePage',props.loggedIn)
-  
-  let history = useHistory()
-  if(!props.loggedIn){
-    history.push('/')
+  console.log('profilePage', props.loggedIn);
+
+  let history = useHistory();
+  if (!props.loggedIn) {
+    history.push('/');
   }
   const submitedFormHandler = (formData) => {
     const profileData = {
@@ -35,12 +34,12 @@ const ProfilePage = (props) => {
 
   return (
     <>
-    {/* if(props.loggedIn==false){
+      {/* if(props.loggedIn==false){
     
         <Redirect to='/' />
       } */}
       <Layout>
-        <Header logedIn={props.loggedIn} authService={props.authService}/>
+        <Header logedIn={props.loggedIn} authService={props.authService} />
         <h2>Profile</h2>
         <Profile submit={submitedFormHandler} uid={props.uid} />
         <p style={{ color: 'gray', textAlign: 'center' }}>{message}</p>

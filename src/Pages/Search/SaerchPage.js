@@ -1,9 +1,9 @@
 import React, { useContext, useState, useEffect } from 'react';
-import axios from '../../../service/AxiosGoogleRead';
-import Layout from '../../Layout/Layout';
-import Header from '../../Navigator/Header/Header';
-import SearchBar from '../../Search/SearchBar/SeachBar';
-import SearchWidget from '../../Search/SearchWidget/SearchWidget';
+import axios from '../../service/AxiosGoogleRead';
+import Layout from '../../component/Layout/Layout';
+import Header from '../../component/Navigator/Header/Header';
+import SearchBar from '../../component/Search/SearchBar/SeachBar';
+import SearchWidget from '../../component/Search/SearchWidget/SearchWidget';
 import { SearchContext } from './search-context';
 import './SearchPage.css';
 
