@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import styles from './login.module.css';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Login = ({ authService }) => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const goToMain = (userId) => {
-    history.push({
+    navigate.push({
       pathname: '/Search',
       state: { id: userId },
     });

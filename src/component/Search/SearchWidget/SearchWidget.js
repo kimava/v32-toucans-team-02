@@ -2,13 +2,13 @@ import React, { useContext, useState } from 'react';
 import './SearchWidget.css';
 import { SearchContext } from '../../../Pages/Search/search-context';
 import img from '../../../Assets/unknownImage.png';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const SearchWidget = ({ userId, cardRepo }) => {
   const bookResultContext = useContext(SearchContext);
   const [selectedList, setSelectedList] = useState([]);
   const [close, setClose] = useState(false);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const trimList = (data, bookId) => {
     const id = bookId;
@@ -36,7 +36,7 @@ const SearchWidget = ({ userId, cardRepo }) => {
   };
 
   const handleMove = () => {
-    history.push('/MyList');
+    navigate.push('/MyList');
   };
 
   const loadBooks = () => {

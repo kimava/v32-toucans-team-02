@@ -1,13 +1,13 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import main from '../../Assets/main.png';
 import './Intro.css';
 
 const Intro = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const goToLogin = () => {
-    history.push('./Login');
+    navigate.push('./Login');
   };
 
   return (

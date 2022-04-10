@@ -1,11 +1,11 @@
-import { Redirect } from 'react-router';
+import { Navigate } from 'react-router-dom';
 import './SearchBar.css';
 import logo from '../../../Assets/icon.png';
 
 const SearchBar = (props) => {
   if (!props.loggedIn) {
     console.log('Not logged in ');
-    return <Redirect to='/' exact />;
+    return <Navigate to='/' />;
   }
 
   return (

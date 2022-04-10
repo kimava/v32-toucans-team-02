@@ -3,7 +3,6 @@ import MenuItem from '../menu-item/menu-item';
 import './Menu.css';
 class Menu extends React.Component {
   menu = [
-  
     {
       name: 'Login',
       isLogedIn: false,
@@ -51,33 +50,29 @@ class Menu extends React.Component {
   }
 
   showHideMenuHadler = () => {
-    if(window.innerWidth<=770){
+    if (window.innerWidth <= 770) {
       this.setState({ hideMenu: !this.state.hideMenu });
-    }else {
+    } else {
       this.setState({ hideMenu: false });
     }
   };
- 
+
   render() {
-    const menuItems = this.menu.map((item, index) =>{
-      if( this.props.logedIn === item.isLogedIn ){
-     
-          return <MenuItem
-          key={index}
-          link={`${item.name}`}
-          >
-          {item.name}
-        </MenuItem> 
-      }else{
-        return null 
+    const menuItems = this.menu.map((item, index) => {
+      if (this.props.logedIn === item.isLogedIn) {
+        return (
+          <MenuItem key={index} link={`${item.name}`}>
+            {item.name}
+          </MenuItem>
+        );
+      } else {
+        return null;
       }
-    })
+    });
     let icon = null;
     if (this.state.width <= 770)
       icon = (
-        <i
-          className={this.state.hideMenu ? 'fa fa-bars ' : 'fa fa-times '}
-        />
+        <i className={this.state.hideMenu ? 'fa fa-bars ' : 'fa fa-times '} />
       );
     else icon = null;
 

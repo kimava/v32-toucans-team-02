@@ -3,15 +3,15 @@ import Layout from '../../component/Layout/Layout';
 import Header from '../../component/Navigator/Header/Header';
 import Profile from '../../component/Profile/Profile';
 import { firebaseDatabase } from '../../service/firebase';
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
 const ProfilePage = (props) => {
   const [message, setMessage] = useState(null);
   console.log('profilePage', props.loggedIn);
 
-  let history = useHistory();
+  let navigate = useNavigate();
   if (!props.loggedIn) {
-    history.push('/');
+    navigate.push('/');
   }
   const submitedFormHandler = (formData) => {
     const profileData = {
