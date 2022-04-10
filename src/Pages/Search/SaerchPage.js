@@ -1,7 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from '../../service/AxiosGoogleRead';
 import Layout from '../../component/Layout/Layout';
-import Header from '../../component/Navigator/Header/Header';
 import SearchBar from '../../component/Search/SearchBar/SeachBar';
 import SearchWidget from '../../component/Search/SearchWidget/SearchWidget';
 import { SearchContext } from './search-context';
@@ -37,7 +36,6 @@ const Search = ({ loggedIn, authService, cardRepo }) => {
   };
   return (
     <Layout>
-      <Header logedIn={loggedIn} authService={authService} />
       <SearchBar
         submit={searchHandler}
         search={getSearchValueHandler}

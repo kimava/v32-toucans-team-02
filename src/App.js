@@ -41,12 +41,12 @@ const App = ({ authService, cardRepo }) => {
             }
           />
           <Route
-            path='/Login'
+            path='/login'
             element={<SignUp logedIn={loggedIn} authService={authService} />}
           />
 
           <Route
-            path='/MyList'
+            path='/my-list'
             element={
               <MyList
                 loggedIn={loggedIn}
@@ -57,7 +57,7 @@ const App = ({ authService, cardRepo }) => {
           />
 
           <Route
-            path='/Search'
+            path='/search'
             element={
               <Search
                 loggedIn={loggedIn}
@@ -68,7 +68,7 @@ const App = ({ authService, cardRepo }) => {
           />
 
           <Route
-            path='/Logout'
+            path='/logout'
             element={<Logout loggedIn={loggedIn} authService={authService} />}
           />
         </Routes>

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Booklist from '../../component/BookList/Booklist';
-import Header from '../../component/Navigator/Header/Header';
 import { useNavigate } from 'react-router-dom';
 import './MyList.css';
+import Layout from '../../component/Layout/Layout';
 
 const MyList = ({ authService, cardRepo, loggedIn }) => {
   const [userId, setUserId] = useState(null);
@@ -39,13 +39,11 @@ const MyList = ({ authService, cardRepo, loggedIn }) => {
   };
 
   return (
-    <div>
+    <Layout>
       {/*      if(loggedIn==false){
     
     <Redirect to='/' />
   } */}
-      <Header logedIn={loggedIn} />
-      <Header logedIn={loggedIn} authService={authService} />
       <div className='card-container'>
         {cards &&
           Object.keys(cards).map((item) => (
@@ -57,7 +55,7 @@ const MyList = ({ authService, cardRepo, loggedIn }) => {
             />
           ))}
       </div>
-    </div>
+    </Layout>
   );
 };
 
