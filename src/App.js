@@ -5,7 +5,6 @@ import MyList from './Pages/MyList/MyList';
 import Profile from './Pages/ProfilePage/ProfilePage';
 import Search from './Pages/Search/SaerchPage';
 import SignUp from './Pages/SignUp/SignUp';
-import ResultProvider from './Pages/Search/search-context';
 
 import './App.css';
 import Logout from './component/Logout/Logout';
@@ -23,57 +22,55 @@ const App = ({ authService, cardRepo }) => {
   }, [userId, authService]);
 
   return (
-    <ResultProvider>
-      <Router>
-        <Routes>
-          <Route
-            path='/'
-            element={<Home loggedIn={loggedIn} authService={authService} />}
-          />
-          <Route
-            path='/profile'
-            element={
-              <Profile
-                loggedIn={loggedIn}
-                authService={authService}
-                uid={userId}
-              />
-            }
-          />
-          <Route
-            path='/login'
-            element={<SignUp logedIn={loggedIn} authService={authService} />}
-          />
+    <Router>
+      <Routes>
+        <Route
+          path='/'
+          element={<Home loggedIn={loggedIn} authService={authService} />}
+        />
+        <Route
+          path='/profile'
+          element={
+            <Profile
+              loggedIn={loggedIn}
+              authService={authService}
+              uid={userId}
+            />
+          }
+        />
+        <Route
+          path='/login'
+          element={<SignUp logedIn={loggedIn} authService={authService} />}
+        />
 
-          <Route
-            path='/my-list'
-            element={
-              <MyList
-                loggedIn={loggedIn}
-                authService={authService}
-                cardRepo={cardRepo}
-              />
-            }
-          />
+        <Route
+          path='/my-list'
+          element={
+            <MyList
+              loggedIn={loggedIn}
+              authService={authService}
+              cardRepo={cardRepo}
+            />
+          }
+        />
 
-          <Route
-            path='/search'
-            element={
-              <Search
-                loggedIn={loggedIn}
-                authService={authService}
-                cardRepo={cardRepo}
-              />
-            }
-          />
+        <Route
+          path='/search'
+          element={
+            <Search
+              loggedIn={loggedIn}
+              authService={authService}
+              cardRepo={cardRepo}
+            />
+          }
+        />
 
-          <Route
-            path='/logout'
-            element={<Logout loggedIn={loggedIn} authService={authService} />}
-          />
-        </Routes>
-      </Router>
-    </ResultProvider>
+        <Route
+          path='/logout'
+          element={<Logout loggedIn={loggedIn} authService={authService} />}
+        />
+      </Routes>
+    </Router>
   );
 };
 

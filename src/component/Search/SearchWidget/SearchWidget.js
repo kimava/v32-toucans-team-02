@@ -1,11 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import './SearchWidget.css';
-import { SearchContext } from '../../../Pages/Search/search-context';
 import img from '../../../Assets/unknownImage.png';
 import { useNavigate } from 'react-router-dom';
 
-const SearchWidget = ({ userId, cardRepo }) => {
-  const bookResultContext = useContext(SearchContext);
+const SearchWidget = ({ userId, cardRepo, list }) => {
   const [selectedList, setSelectedList] = useState([]);
   const [close, setClose] = useState(false);
   const navigate = useNavigate();
@@ -40,7 +38,7 @@ const SearchWidget = ({ userId, cardRepo }) => {
   };
 
   const loadBooks = () => {
-    let books = bookResultContext.resultBooks;
+    let books = list;
     let listElements = [];
     if (books) {
       for (let i in books) {
