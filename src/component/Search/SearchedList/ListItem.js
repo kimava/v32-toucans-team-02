@@ -2,21 +2,25 @@ import React from 'react';
 import defaultImg from '../../../Assets/unknownImage.png';
 import './SearchedList.css';
 
-const ListItem = ({ item: { volumeInfo } }) => {
+const ListItem = ({ item: { volumeInfo }, googleBooks, onAdd }) => {
+  const list = googleBooks.trimList(volumeInfo);
+  const { id, title, author, thumbnail, imgUrl } = list;
+  const handleClick = () => {
+    onAdd(id, title, author, imgUrl);
+  };
+
   return (
     <li className='book_card'>
       <img
         className='book_img'
-        src={
-          volumeInfo.imageLinks ? volumeInfo.imageLinks.thumbnail : defaultImg
-        }
-        alt={volumeInfo.title}
+        src={thumbnail ? thumbnail : defaultImg}
+        alt={title}
       />
-      <p>{volumeInfo.title}</p>
-      <p className='book_author'>
-        {volumeInfo.authors ? volumeInfo.authors : 'unknown'}
-      </p>
-      <button className='add_btn'>Add to list</button>
+      <p>{title}</p>
+      <p className='book_author'>{author}</p>
+      <button className='add_btn' onClick={handleClick}>
+        Add to list
+      </button>
     </li>
   );
 };
