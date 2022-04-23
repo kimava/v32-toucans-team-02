@@ -38,43 +38,14 @@ const SearchWidget = ({ userId, cardRepo, list }) => {
   };
 
   const loadBooks = () => {
-    let books = list;
-    let listElements = [];
-    if (books) {
-      for (let i in books) {
-        let imgsrc = '/Assets/unknownImage.png';
-        try {
-          imgsrc = books[i].volumeInfo.imageLinks.thumbnail;
-        } catch (err) {
-          imgsrc = img;
-        }
-        let element = (
-          <div key={i} className='book_card'>
-            <img
-              src={imgsrc}
-              alt={books[i].volumeInfo.title}
-              className='book_img'
-            />
-            <p>{books[i].volumeInfo.title}</p>
-            <p className='book_author'>
-              {books[i].volumeInfo.authors
-                ? books[i].volumeInfo.authors
-                : 'unknown'}
-            </p>
-            <button
-              className='add_btn'
-              onClick={() => {
-                handleList(books[i].volumeInfo, books[i].id);
-              }}
-            >
-              Add to list
-            </button>
-          </div>
-        );
-        listElements.push(element);
-      }
-    }
-    return listElements;
+    <button
+      className='add_btn'
+      onClick={() => {
+        handleList(books[i].volumeInfo, books[i].id);
+      }}
+    >
+      Add to list
+    </button>;
   };
 
   return (

@@ -3,7 +3,7 @@ import axios from 'axios';
 import GoogleBooks from '../../component/Search/searchPresenter';
 import Layout from '../../component/Layout/Layout';
 import SearchBar from '../../component/Search/SearchBar/SeachBar';
-import SearchWidget from '../../component/Search/SearchWidget/SearchWidget';
+import SearchedList from '../../component/Search/SearchedList/SearchedList';
 import './SearchPage.css';
 
 const client = axios.create({
@@ -27,7 +27,7 @@ const Search = ({ loggedIn, authService, cardRepo }) => {
   return (
     <Layout>
       <SearchBar onSearch={handleSearch} />
-      <SearchWidget cardRepo={cardRepo} userId={userId} list={bookList} />
+      <SearchedList bookList={bookList} />
     </Layout>
   );
 };
