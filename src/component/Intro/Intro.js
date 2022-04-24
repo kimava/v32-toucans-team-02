@@ -7,7 +7,7 @@ const Intro = () => {
   const navigate = useNavigate();
 
   const goToLogin = () => {
-    navigate.push('./Login');
+    navigate('/Login');
   };
 
   return (

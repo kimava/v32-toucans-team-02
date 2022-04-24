@@ -1,29 +1,40 @@
-import { firebaseAuth, githubProvider, googleProvider } from './firebase';
-import { useHistory } from "react-router-dom";
-class AuthService  {
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  GithubAuthProvider,
+} from 'firebase/auth';
+
+import { useHistory } from 'react-router-dom';
+class AuthService {
+  constructor() {
+    this.firebaseAuth = getAuth();
+    this.googleProvider = new GoogleAuthProvider();
+    this.githubProvider = new GithubAuthProvider();
+  }
 
   login(providerName) {
     const authProvider = this.getProvider(providerName);
-    return firebaseAuth.signInWithPopup(authProvider)
+    return signInWithPopup(this.firebaseAuth, authProvider);
   }
- 
+
   logout() {
-   firebaseAuth.signOut()
+    this.firebaseAuth.signOut();
   }
 
   onAuthChange(onUserChange) {
-   firebaseAuth.onAuthStateChanged((user) => {
+    this.firebaseAuth.onAuthStateChanged((user) => {
       onUserChange(user);
     });
   }
 
   getStatus(setUid) {
-    firebaseAuth.onAuthStateChanged((user) => {
+    this.firebaseAuth.onAuthStateChanged((user) => {
       if (user) {
         const uid = user.uid;
         setUid(uid);
       } else {
-        setUid(null)
+        setUid(null);
       }
     });
   }
@@ -31,9 +42,9 @@ class AuthService  {
   getProvider(providerName) {
     switch (providerName) {
       case 'Google':
-        return googleProvider;
+        return this.googleProvider;
       case 'Github':
-        return githubProvider;
+        return this.githubProvider;
       default:
         throw new Error(`unknown provider: ${providerName}`);
     }

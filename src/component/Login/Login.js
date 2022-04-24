@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 const Login = ({ authService }) => {
   const navigate = useNavigate();
   const goToMain = (userId) => {
-    navigate.push({
+    navigate({
       pathname: '/Search',
       state: { id: userId },
     });

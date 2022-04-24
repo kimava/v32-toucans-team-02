@@ -9,7 +9,7 @@ const Logout = ({ authService, loggedIn }) => {
 
   try {
     authService.logout();
-    navigate.push('/');
+    navigate('/');
   } catch (err) {
     console.log(err);
   }

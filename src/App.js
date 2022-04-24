@@ -28,7 +28,7 @@ const App = ({ authService, cardRepo }) => {
           path='/'
           element={<Home loggedIn={loggedIn} authService={authService} />}
         />
-        <Route
+        {/* <Route
           path='/profile'
           element={
             <Profile
@@ -37,7 +37,7 @@ const App = ({ authService, cardRepo }) => {
               uid={userId}
             />
           }
-        />
+        /> */}
         <Route
           path='/login'
           element={<SignUp logedIn={loggedIn} authService={authService} />}
