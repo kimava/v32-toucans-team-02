@@ -5,6 +5,7 @@ import './SearchedList.css';
 const ListItem = ({ item: { volumeInfo }, googleBooks, onAdd }) => {
   const list = googleBooks.trimList(volumeInfo);
   const { id, title, author, thumbnail, imgUrl } = list;
+
   const handleClick = () => {
     onAdd(id, title, author, imgUrl);
   };
