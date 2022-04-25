@@ -9,7 +9,7 @@ const MyList = ({ authService, cardRepo, loggedIn }) => {
   const [cards, setCards] = useState({});
   let navigate = useNavigate();
   if (!loggedIn) {
-    navigate.push('/');
+    navigate('/');
   }
   useEffect(() => {
     authService.getStatus(setUserId);

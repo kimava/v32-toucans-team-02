@@ -5,7 +5,6 @@ import {
   GithubAuthProvider,
 } from 'firebase/auth';
 
-import { useHistory } from 'react-router-dom';
 class AuthService {
   constructor() {
     this.firebaseAuth = getAuth();

@@ -41,7 +41,7 @@ const Search = ({ loggedIn, authService, cardRepo }) => {
   };
 
   const handleMove = () => {
-    navigate.push('/MyList');
+    navigate('/MyList');
   };
 
   return (

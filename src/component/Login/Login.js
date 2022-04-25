@@ -1,26 +1,17 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styles from './login.module.css';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/auth_context';
 
-const Login = ({ authService }) => {
+const Login = () => {
   const navigate = useNavigate();
-  const goToMain = (userId) => {
-    navigate({
-      pathname: '/Search',
-      state: { id: userId },
-    });
-  };
+  const { authService } = useContext(AuthContext);
+
   const onLogin = (event) => {
     authService //
       .login(event.currentTarget.textContent)
-      .then((data) => goToMain(data.user.uid));
+      .then(navigate('/search'));
   };
-
-  useEffect(() => {
-    authService.onAuthChange((user) => {
-      user && goToMain(user.uid);
-    });
-  });
 
   return (
     <section className={styles.login}>
