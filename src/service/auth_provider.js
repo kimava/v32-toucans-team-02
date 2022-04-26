@@ -6,16 +6,16 @@ import AuthService from '../service/auth_service';
 const authService = new AuthService(firebaseApp);
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     authService.onAuthChange((user) => {
-      user && setUser(user.uid);
+      user ? setUserId(user.uid) : setUserId(null);
     });
   }, []);
 
   return (
-    <AuthContext.Provider value={{ authService, user }}>
+    <AuthContext.Provider value={{ authService, userId }}>
       {children}
     </AuthContext.Provider>
   );

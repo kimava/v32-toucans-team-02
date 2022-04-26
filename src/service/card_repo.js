@@ -6,7 +6,7 @@ class CardRepo {
   }
 
   fetchCards(userId, onUpdate) {
-    const query = ref(this.db, `${userId}/cards`);
+    const query = ref(this.db, `users/${userId}/cards`);
     onValue(query, (snapshot) => {
       const value = snapshot.val();
       value && onUpdate(value);
@@ -15,11 +15,11 @@ class CardRepo {
   }
 
   saveCard(userId, id, card) {
-    set(ref(this.db, `${userId}/cards/${id}`), card);
+    set(ref(this.db, `users/${userId}/cards/${id}`), card);
   }
 
   removeCard(userId, id) {
-    remove(ref(this.db, `${userId}/cards/${id}`));
+    remove(ref(this.db, `users/${userId}/cards/${id}`));
   }
 }
 

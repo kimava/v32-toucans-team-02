@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../context/auth_context';
 import {
   Nav,
   NavLink,
@@ -6,25 +7,29 @@ import {
   Bars,
   NavMenu,
   SignUpBtns,
-  Button,
+  SignOutButton,
+  SignInButton,
 } from './NavStyle';
 
 const Menu = () => {
+  const { userId, authService } = useContext(AuthContext);
+
+  const onLogout = () => {
+    authService.logout();
+  };
+
   const menu = [
     {
       name: 'SEARCH',
       to: 'search',
-      isLogedIn: true,
     },
     {
       name: 'MY LIST',
       to: 'my-list',
-      isLogedIn: true,
     },
     {
       name: 'PROFILE',
       to: 'profile',
-      isLogedIn: true,
     },
   ];
 
@@ -42,8 +47,11 @@ const Menu = () => {
         ))}
       </NavMenu>
       <SignUpBtns>
-        <Button to='/login'>SIGN UP</Button>
-        <Button to='/login'>LOG IN</Button>
+        {userId ? (
+          <SignOutButton onClick={onLogout}>SIGN OUT</SignOutButton>
+        ) : (
+          <SignInButton to='/login'>SIGN IN</SignInButton>
+        )}
       </SignUpBtns>
     </Nav>
   );

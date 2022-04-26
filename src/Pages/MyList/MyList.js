@@ -1,23 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Booklist from '../../component/BookList/Booklist';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/auth_context';
 import './MyList.css';
 import Layout from '../../component/Layout/Layout';
 
-const MyList = ({ authService, cardRepo, loggedIn }) => {
-  const [userId, setUserId] = useState(null);
+const MyList = ({ cardRepo }) => {
+  const navigate = useNavigate();
+  const { userId } = useContext(AuthContext);
   const [cards, setCards] = useState({});
-  let navigate = useNavigate();
-  if (!loggedIn) {
-    navigate('/');
-  }
-  useEffect(() => {
-    authService.getStatus(setUserId);
-  }, [authService]);
 
   useEffect(() => {
     if (!userId) {
-      return;
+      navigate('/login');
     }
     const stopFetch = cardRepo.fetchCards(userId, (items) => {
       setCards(items);
@@ -40,10 +35,6 @@ const MyList = ({ authService, cardRepo, loggedIn }) => {
 
   return (
     <Layout>
-      {/*      if(loggedIn==false){
-    
-    <Redirect to='/' />
-  } */}
       <div className='card-container'>
         {cards &&
           Object.keys(cards).map((item) => (

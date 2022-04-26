@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/auth_context';
 import axios from 'axios';
 import GoogleBooks from '../../component/Search/searchPresenter';
 import Layout from '../../component/Layout/Layout';
@@ -14,16 +15,17 @@ const client = axios.create({
 
 const googleBooks = new GoogleBooks(client);
 
-const Search = ({ loggedIn, authService, cardRepo }) => {
-  const [userId, setUserId] = useState(null);
+const Search = ({ cardRepo }) => {
+  const navigate = useNavigate();
+  const { userId } = useContext(AuthContext);
   const [bookList, setBookList] = useState([]);
   const [popUpOpen, setPopUpOpen] = useState(false);
 
-  const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   authService.getStatus(setUserId);
-  // }, [authService]);
+  useEffect(() => {
+    if (!userId) {
+      navigate('/login');
+    }
+  }, [userId]);
 
   const handleSearch = (value) => {
     googleBooks.search(value).then((results) => setBookList(results));
@@ -41,7 +43,7 @@ const Search = ({ loggedIn, authService, cardRepo }) => {
   };
 
   const handleMove = () => {
-    navigate('/MyList');
+    navigate('/my-list');
   };
 
   return (

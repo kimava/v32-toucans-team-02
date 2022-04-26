@@ -62,10 +62,30 @@ export const SignUpBtns = styled.div`
   }
 `;
 
-export const Button = styled(Link)`
+export const SignInButton = styled(Link)`
   margin-right: 1rem;
   padding: 1rem 1.5rem;
-  width: 7.5rem;
+  width: 8rem;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  background-color: #000;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transition: all 0.2s ease-in-out;
+    color: #000;
+    background-color: #fff;
+  }
+`;
+
+export const SignOutButton = styled.button`
+  margin-right: 1rem;
+  padding: 1rem 1.5rem;
+  width: 8rem;
   color: #fff;
   text-align: center;
   text-decoration: none;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import MyList from './Pages/MyList/MyList';
@@ -7,7 +7,6 @@ import Search from './Pages/Search/SaerchPage';
 import SignUp from './Pages/SignUp/SignUp';
 import Logout from './component/Logout/Logout';
 import './App.css';
-import { AuthContext } from './context/auth_context';
 
 const App = ({ cardRepo }) => {
   return (
