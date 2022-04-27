@@ -32,7 +32,7 @@ const Search = ({ cardRepo }) => {
   };
 
   const addList = (bookId, title, author, url) => {
-    const info = { title, author, url };
+    const info = { title, author, url, bookId };
     cardRepo.saveCard(userId, bookId, info);
     setPopUpOpen(true);
     // document.body.style.overflow = 'hidden';

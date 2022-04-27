@@ -1,9 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import Booklist from '../../component/BookList/Booklist';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth_context';
-import './MyList.css';
+import Booklist from '../../component/BookList/Booklist';
 import Layout from '../../component/Layout/Layout';
+import './MyList.css';
 
 const MyList = ({ cardRepo }) => {
   const navigate = useNavigate();
@@ -20,17 +20,12 @@ const MyList = ({ cardRepo }) => {
     return () => stopFetch();
   }, [userId, cardRepo]);
 
-  const deleteCard = (selected) => {
-    setCards((cards) => {
-      const updated = { ...cards };
-      delete updated[selected.id];
-      return updated;
-    });
-    cardRepo.removeCard(userId, selected.id);
+  const saveCard = (card) => {
+    cardRepo.saveCard(userId, card.bookId, card);
   };
 
-  const addCard = (card) => {
-    cardRepo.saveCard(userId, card.id, card);
+  const deleteCard = (selected) => {
+    cardRepo.removeCard(userId, selected.bookId);
   };
 
   return (
@@ -39,10 +34,10 @@ const MyList = ({ cardRepo }) => {
         {cards &&
           Object.keys(cards).map((item) => (
             <Booklist
-              key={cards[item].id}
+              key={cards[item].bookId}
               card={cards[item]}
+              saveCard={saveCard}
               deleteCard={deleteCard}
-              addCard={addCard}
             />
           ))}
       </div>

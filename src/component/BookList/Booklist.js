@@ -3,25 +3,29 @@ import defaultImg from '../../Assets/unknownImage.png';
 import CustomizedRatings from '../UI/rating';
 import styles from './BookList.module.css';
 
-const Booklist = ({ card, deleteCard, addCard }) => {
+const Booklist = ({ card, saveCard, deleteCard }) => {
   const statusRef = useRef();
   const commentRef = useRef();
-  const [rating, setRating] = useState(null);
+
+  const [rating, setRating] = useState(0);
   const [toggle, setToggle] = useState(true);
   const [disabled, setDisabled] = useState(false);
-  const { Url, title, author, status, rate, comment, id } = card;
-  const onDelete = (event) => {
+
+  const { url, title, author, status, rate, comment, bookId } = card;
+
+  const onDelete = () => {
     deleteCard(card);
   };
+
   const onSave = (event) => {
     event.preventDefault();
     const newcard = {
       ...card,
       status: statusRef.current.value || '',
-      rate: rating * 1 || 0,
+      rate: rating * 1,
       comment: commentRef.current.value || '',
     };
-    addCard(newcard);
+    saveCard(newcard);
   };
 
   const handleToggle = (event) => {
@@ -47,7 +51,7 @@ const Booklist = ({ card, deleteCard, addCard }) => {
       <button className={styles.deleteBtn} onClick={onDelete}>
         <i className='fas fa-times'></i>
       </button>
-      <img src={Url ? Url : defaultImg} alt={title} className={styles.thumb} />
+      <img src={url ? url : defaultImg} alt={title} className={styles.thumb} />
       <h1 className={styles.title}>{title}</h1>
       <span className={styles.author}>{author}</span>
 
@@ -62,7 +66,11 @@ const Booklist = ({ card, deleteCard, addCard }) => {
           <option value='reading'>reading</option>
           <option value='read'>done</option>
         </select>
-        <CustomizedRatings id={id} getValue={getValue} preValue={rate * 1} />
+        <CustomizedRatings
+          id={bookId}
+          getValue={getValue}
+          preValue={rate ? rate : rating}
+        />
 
         <textarea
           name='comment'

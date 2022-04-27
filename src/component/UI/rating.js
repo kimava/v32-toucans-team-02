@@ -23,8 +23,8 @@ export default function CustomizedRatings({ id, preValue, getValue }) {
       <Box component='fieldset' mb={1} borderColor='transparent'>
         <StyledRating
           name={id}
-          defaultValue={preValue ? preValue : 0}
-          precision={0.5}
+          value={preValue ? preValue : 0}
+          precision={1}
           onChange={onChange}
           icon={<FavoriteIcon fontSize='inherit' />}
         />
