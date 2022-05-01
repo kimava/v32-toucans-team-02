@@ -28,8 +28,8 @@ const Menu = () => {
       to: 'my-list',
     },
     {
-      name: 'PROFILE',
-      to: 'profile',
+      name: 'MY PAGE',
+      to: 'my-page',
     },
   ];
 

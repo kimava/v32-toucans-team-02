@@ -7,22 +7,15 @@ import Search from './Pages/Search/SaerchPage';
 import SignUp from './Pages/SignUp/SignUp';
 import Logout from './component/Logout/Logout';
 import './App.css';
+import MyPage from './Pages/MyPage/MyPage';
 
 const App = ({ cardRepo }) => {
   return (
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
-        {/* <Route
-          path='/profile'
-          element={
-            <Profile
-              loggedIn={loggedIn}
-              authService={authService}
-              uid={userId}
-            />
-          }
-        /> */}
+        <Route path='/my-page' element={<MyPage cardRepo={cardRepo} />} />
+
         <Route path='/login' element={<SignUp />} />
 
         <Route path='/my-list' element={<MyList cardRepo={cardRepo} />} />

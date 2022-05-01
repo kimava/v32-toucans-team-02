@@ -3,6 +3,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   GithubAuthProvider,
+  deleteUser,
 } from 'firebase/auth';
 
 class AuthService {
@@ -47,6 +48,17 @@ class AuthService {
       default:
         throw new Error(`unknown provider: ${providerName}`);
     }
+  }
+
+  deleteAccount(deleteAlert) {
+    const user = this.firebaseAuth.currentUser;
+    deleteUser(user)
+      .then(() => {
+        console.log('account deleted');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
 

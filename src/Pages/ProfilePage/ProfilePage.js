@@ -22,10 +22,6 @@ const ProfilePage = (props) => {
 
   return (
     <>
-      {/* if(props.loggedIn==false){
-    
-        <Redirect to='/' />
-      } */}
       <Layout>
         <h2>Profile</h2>
         <p style={{ color: 'gray', textAlign: 'center' }}>{message}</p>
