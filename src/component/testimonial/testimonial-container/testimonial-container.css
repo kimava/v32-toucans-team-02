@@ -1,9 +1,0 @@
-.container {
-  display: flex;
-}
-
-@media screen and (max-width: 48rem) {
-  .container {
-    flex-direction: column;
-  }
-}

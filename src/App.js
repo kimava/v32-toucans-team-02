@@ -2,10 +2,8 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import MyList from './Pages/MyList/MyList';
-import Profile from './Pages/ProfilePage/ProfilePage';
 import Search from './Pages/Search/SaerchPage';
 import SignUp from './Pages/SignUp/SignUp';
-import Logout from './component/Logout/Logout';
 import './App.css';
 import MyPage from './Pages/MyPage/MyPage';
 
@@ -21,8 +19,6 @@ const App = ({ cardRepo }) => {
         <Route path='/my-list' element={<MyList cardRepo={cardRepo} />} />
 
         <Route path='/search' element={<Search cardRepo={cardRepo} />} />
-
-        <Route path='/logout' element={<Logout />} />
       </Routes>
     </Router>
   );
