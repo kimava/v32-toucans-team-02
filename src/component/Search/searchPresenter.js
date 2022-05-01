@@ -13,10 +13,11 @@ class GoogleBooks {
   }
 
   trimList(list) {
-    const id = list.industryIdentifiers[0].identifier;
-    const { title } = list;
-    const author = list.authors ? list.authors : 'unknown';
-    const thumbnail = list.imageLinks?.thumbnail;
+    const id = list.id;
+    const info = list.volumeInfo;
+    const title = info.title ? info.title : '';
+    const author = info.authors ? info.authors : 'unknown';
+    const thumbnail = info.imageLinks?.thumbnail;
     const imgUrl = thumbnail ? thumbnail : null;
     return { id, title, author, thumbnail, imgUrl };
   }

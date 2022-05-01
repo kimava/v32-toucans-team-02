@@ -2,8 +2,8 @@ import React from 'react';
 import defaultImg from '../../../Assets/unknownImage.png';
 import './SearchedList.css';
 
-const ListItem = ({ item: { volumeInfo }, googleBooks, onAdd }) => {
-  const list = googleBooks.trimList(volumeInfo);
+const ListItem = ({ item, googleBooks, onAdd }) => {
+  const list = googleBooks.trimList(item);
   const { id, title, author, thumbnail, imgUrl } = list;
 
   const handleClick = () => {

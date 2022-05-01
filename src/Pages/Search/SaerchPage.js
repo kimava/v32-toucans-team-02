@@ -28,7 +28,13 @@ const Search = ({ cardRepo }) => {
   }, [userId]);
 
   const handleSearch = (value) => {
-    googleBooks.search(value).then((results) => setBookList(results));
+    googleBooks
+      .search(value)
+      .then((results) => setBookList(results))
+      .catch((error) => {
+        console.log(error);
+        setBookList(null);
+      });
   };
 
   const addList = (bookId, title, author, url) => {

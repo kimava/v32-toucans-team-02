@@ -3,18 +3,19 @@ import ListItem from './ListItem';
 import './SearchedList.css';
 
 const SearchedList = ({ bookList, googleBooks, onAdd }) => {
-  return (
+  return bookList ? (
     <ul className='list_container'>
-      {bookList &&
-        bookList.map((item) => (
-          <ListItem
-            key={item.id}
-            item={item}
-            googleBooks={googleBooks}
-            onAdd={onAdd}
-          />
-        ))}
+      {bookList.map((item) => (
+        <ListItem
+          key={item.id}
+          item={item}
+          googleBooks={googleBooks}
+          onAdd={onAdd}
+        />
+      ))}
     </ul>
+  ) : (
+    <p>no result found</p>
   );
 };
 
