@@ -1,8 +1,14 @@
 .card-container {
   margin: auto;
   margin-top: 150px;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  gap: 10px;
   width: 95%;
+}
+
+@media screen and (max-width: 48rem) {
+  .card-container {
+    grid-template-columns: repeat(3, 33%);
+  }
 }

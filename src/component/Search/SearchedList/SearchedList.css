@@ -1,8 +1,7 @@
 .list_container {
   margin: 1rem auto;
   display: grid;
-  grid-template-columns: 100%;
-  justify-content: center;
+  grid-template-columns: repeat(4, 25%);
   width: 90%;
   height: auto;
 }
