@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../context/auth_context';
 import {
   Nav,
   NavLink,
   Logo,
   Bars,
+  BarDropDown,
   NavMenu,
   SignUpBtns,
   SignOutButton,
@@ -13,6 +14,7 @@ import {
 
 const Menu = () => {
   const { userId, authService } = useContext(AuthContext);
+  const [barOpen, setBarOpen] = useState(false);
 
   const onLogout = () => {
     authService.logout();
@@ -33,19 +35,24 @@ const Menu = () => {
     },
   ];
 
+  const menuList = menu.map((item) => (
+    <NavLink to={`/${item.to}`} key={`${item.name}`}>
+      {item.name}
+    </NavLink>
+  ));
+
+  const onBarToggle = () => {
+    setBarOpen(!barOpen);
+  };
+
   return (
     <Nav>
       <NavLink to='/'>
         <Logo />
       </NavLink>
-      <Bars />
-      <NavMenu>
-        {menu.map((item) => (
-          <NavLink to={`/${item.to}`} key={`${item.name}`}>
-            {item.name}
-          </NavLink>
-        ))}
-      </NavMenu>
+      <Bars onClick={onBarToggle} />
+      {barOpen && <BarDropDown>{menuList}</BarDropDown>}
+      <NavMenu>{menuList}</NavMenu>
       <SignUpBtns>
         {userId ? (
           <SignOutButton onClick={onLogout}>SIGN OUT</SignOutButton>

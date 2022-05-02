@@ -45,7 +45,7 @@
   background-color: #fff176;
 }
 
-@media (min-width: 48rem) {
+@media screen and (max-width: 48rem) {
   .list_container {
     grid-template-columns: repeat(3, 33%);
   }

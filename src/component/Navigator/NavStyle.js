@@ -42,7 +42,7 @@ export const Logo = styled.img.attrs({ src: `${logo}` })`
 
 export const Bars = styled(FaBars)`
   display: none;
-  color: #fff;
+  color: #000;
 
   @media screen and (max-width: 48rem) {
     position: absolute;
@@ -52,6 +52,35 @@ export const Bars = styled(FaBars)`
     font-size: 1.8rem;
     transform: translate(-100%, 75%);
     cursor: pointer;
+    z-index: 10;
+  }
+`;
+
+export const BarDropDown = styled.div`
+  display: none;
+  @media screen and (max-width: 48rem) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+
+    a {
+      padding: 1.5rem;
+      width: 100%;
+      font-size: 2rem;
+      text-align: center;
+
+      &:hover {
+        background-color: #efefef;
+        transition: all 0.2s ease-in-out;
+      }
+    }
   }
 `;
 

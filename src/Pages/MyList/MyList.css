@@ -9,6 +9,7 @@
 
 @media screen and (max-width: 48rem) {
   .card-container {
-    grid-template-columns: repeat(3, 33%);
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
   }
 }
