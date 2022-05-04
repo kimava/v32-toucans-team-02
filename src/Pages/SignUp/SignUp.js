@@ -1,16 +1,19 @@
 import React, { useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth_context';
 import Login from '../../component/Login/Login';
 import styles from './signup.module.css';
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { userId } = useContext(AuthContext);
+
+  const from = location.state?.from?.pathname || '/';
 
   useEffect(() => {
     if (userId) {
-      navigate('/search');
+      navigate(from, { replace: true });
     }
   }, [userId]);
 

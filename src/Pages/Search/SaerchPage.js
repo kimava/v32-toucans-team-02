@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth_context';
 import axios from 'axios';
@@ -20,12 +20,6 @@ const Search = ({ cardRepo }) => {
   const { userId } = useContext(AuthContext);
   const [bookList, setBookList] = useState([]);
   const [popUpOpen, setPopUpOpen] = useState(false);
-
-  useEffect(() => {
-    if (!userId) {
-      navigate('/login');
-    }
-  }, [userId]);
 
   const handleSearch = (value) => {
     googleBooks

@@ -50,7 +50,7 @@ class AuthService {
     }
   }
 
-  deleteAccount(deleteAlert) {
+  deleteAccount() {
     const user = this.firebaseAuth.currentUser;
     deleteUser(user)
       .then(() => {
