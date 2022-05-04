@@ -70,7 +70,9 @@
 }
 
 .saveBtn {
+  margin-left: 1rem;
   padding: 0.6rem 1rem;
+  width: 4rem;
   color: rgb(71, 71, 71);
   background-color: #fff59d;
   border: none;

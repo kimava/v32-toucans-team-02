@@ -4,14 +4,14 @@ import CustomizedRatings from '../UI/rating';
 import styles from './BookList.module.css';
 
 const Booklist = ({ card, saveCard, deleteCard }) => {
+  const { url, title, author, status, rate, comment, bookId } = card;
+
   const statusRef = useRef();
   const commentRef = useRef();
 
-  const [rating, setRating] = useState(0);
-  const [toggle, setToggle] = useState(true);
+  const [rating, setRating] = useState(rate ? rate : 0);
+  const [editable, setEditable] = useState(true);
   const [disabled, setDisabled] = useState(false);
-
-  const { url, title, author, status, rate, comment, bookId } = card;
 
   const onDelete = () => {
     deleteCard(card);
@@ -28,15 +28,15 @@ const Booklist = ({ card, saveCard, deleteCard }) => {
     saveCard(newcard);
   };
 
-  const handleToggle = (event) => {
-    if (toggle) {
-      setToggle(false);
+  const handleEdit = (event) => {
+    if (editable) {
+      setEditable(false);
       event.target.innerHTML = 'edit';
       setDisabled(true);
       onSave(event);
     } else {
       event.target.innerHTML = 'save';
-      setToggle(true);
+      setEditable(true);
       setDisabled(false);
     }
   };
@@ -60,6 +60,7 @@ const Booklist = ({ card, saveCard, deleteCard }) => {
           name='status'
           className={styles.selector}
           ref={statusRef}
+          disabled={disabled}
           defaultValue={status ? status : null}
         >
           <option value='toRead'>to read</option>
@@ -68,8 +69,9 @@ const Booklist = ({ card, saveCard, deleteCard }) => {
         </select>
         <CustomizedRatings
           id={bookId}
+          disabled={disabled}
           getValue={getValue}
-          preValue={rate ? rate : rating}
+          preValue={rating}
         />
 
         <textarea
@@ -79,11 +81,10 @@ const Booklist = ({ card, saveCard, deleteCard }) => {
           disabled={disabled}
           defaultValue={comment ? comment : ''}
         />
-
-        <button className={styles.saveBtn} onClick={handleToggle}>
-          save
-        </button>
       </div>
+      <button className={styles.saveBtn} onClick={handleEdit}>
+        save
+      </button>
     </div>
   );
 };

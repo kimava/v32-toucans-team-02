@@ -13,7 +13,12 @@ const StyledRating = withStyles({
   },
 })(Rating);
 
-export default function CustomizedRatings({ id, preValue, getValue }) {
+export default function CustomizedRatings({
+  id,
+  disabled,
+  preValue,
+  getValue,
+}) {
   const onChange = (event) => {
     const value = event.target.value;
     getValue(value);
@@ -23,6 +28,7 @@ export default function CustomizedRatings({ id, preValue, getValue }) {
       <Box component='fieldset' mb={1} borderColor='transparent'>
         <StyledRating
           name={id}
+          disabled={disabled}
           value={preValue ? preValue : 0}
           precision={1}
           onChange={onChange}
