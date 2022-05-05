@@ -16,7 +16,7 @@ const Stats = ({ cardRepo }) => {
       setCards(items);
     });
     return () => stopFetch();
-  }, [userId, cardRepo]);
+  }, [userId, navigate, cardRepo]);
 
   const readingStatus = Object.keys(cards).map((item) => cards[item].status);
 

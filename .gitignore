@@ -25,3 +25,6 @@ yarn-error.log*
 
 /Controls
 /Login
+
+# Local Netlify folder
+.netlify

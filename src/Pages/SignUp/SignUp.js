@@ -16,7 +16,7 @@ const SignUp = () => {
     if (userId) {
       navigate(from, { replace: true });
     }
-  }, [userId]);
+  }, [userId, from, navigate]);
 
   return (
     <Layout>
