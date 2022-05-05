@@ -2,28 +2,26 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import RequireAuth from './component/Layout/RequireAuth';
 import Home from './Pages/Home/Home';
-import MyList from './Pages/MyList/MyList';
-import Search from './Pages/Search/SaerchPage';
 import SignUp from './Pages/SignUp/SignUp';
-import './App.css';
+import Search from './Pages/Search/SaerchPage';
+import MyList from './Pages/MyList/MyList';
 import MyPage from './Pages/MyPage/MyPage';
+import './App.css';
 
 const App = ({ cardRepo }) => {
   return (
     <Router>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/login' element={<SignUp />} />
         <Route
-          path='/my-page'
+          path='/search'
           element={
             <RequireAuth>
-              <MyPage cardRepo={cardRepo} />
+              <Search cardRepo={cardRepo} />
             </RequireAuth>
           }
         />
-
-        <Route path='/login' element={<SignUp />} />
-
         <Route
           path='/my-list'
           element={
@@ -32,12 +30,11 @@ const App = ({ cardRepo }) => {
             </RequireAuth>
           }
         />
-
         <Route
-          path='/search'
+          path='/my-page'
           element={
             <RequireAuth>
-              <Search cardRepo={cardRepo} />
+              <MyPage cardRepo={cardRepo} />
             </RequireAuth>
           }
         />

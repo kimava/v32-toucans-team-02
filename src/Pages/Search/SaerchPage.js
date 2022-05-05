@@ -7,7 +7,6 @@ import Layout from '../../component/Layout/Layout';
 import SearchBar from '../../component/Search/SearchBar/SeachBar';
 import SearchedList from '../../component/Search/SearchedList/SearchedList';
 import PopUp from '../../component/PopUp/PopUp';
-import './SearchPage.css';
 
 const client = axios.create({
   baseURL: 'https://www.googleapis.com/books/v1/volumes?q=',
@@ -35,7 +34,7 @@ const Search = ({ cardRepo }) => {
     const info = { title, author, url, bookId };
     cardRepo.saveCard(userId, bookId, info);
     setPopUpOpen(true);
-    // document.body.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
   };
 
   const handlePopUpClose = () => {

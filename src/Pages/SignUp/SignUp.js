@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth_context';
+import Layout from '../../component/Layout/Layout';
 import Login from '../../component/Login/Login';
 import styles from './signup.module.css';
 
@@ -18,11 +19,13 @@ const SignUp = () => {
   }, [userId]);
 
   return (
-    <div className={styles.container}>
-      <div className={styles.loginBox}>
-        <Login />
+    <Layout>
+      <div className={styles.container}>
+        <div className={styles.loginBox}>
+          <Login />
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
 

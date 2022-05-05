@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import styles from './login.module.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth_context';
+import styles from './login.module.css';
 
 const Login = () => {
   const navigate = useNavigate();

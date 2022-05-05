@@ -28,17 +28,6 @@ class AuthService {
     });
   }
 
-  getStatus(setUid) {
-    this.firebaseAuth.onAuthStateChanged((user) => {
-      if (user) {
-        const uid = user.uid;
-        setUid(uid);
-      } else {
-        setUid(null);
-      }
-    });
-  }
-
   getProvider(providerName) {
     switch (providerName) {
       case 'Google':

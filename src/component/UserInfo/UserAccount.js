@@ -25,7 +25,7 @@ const UserAccount = () => {
       <h1>User Setting</h1>
       <h3>Delete Account</h3>
       <p>Permanently delete your account and all of your content</p>
-      <button onClick={onBtnClick}>Delete Account</button>
+      <span onClick={onBtnClick}>Delete Account</span>
       <PopUp
         open={popUpOpen}
         message={'Do you really wanna leave? 😢'}

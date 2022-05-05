@@ -4,7 +4,7 @@ import './PopUp.css';
 const PopUp = ({ open, message, handleClose, children }) => {
   const onClick = () => {
     handleClose();
-    // document.body.style.overflow = 'unset';
+    document.body.style.overflow = 'unset';
   };
 
   return (

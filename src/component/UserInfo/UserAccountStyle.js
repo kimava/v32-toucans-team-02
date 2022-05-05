@@ -13,13 +13,11 @@ export const SettingsDiv = styled.div`
     margin-bottom: 0.8rem;
   }
 
-  button {
+  span {
     font-size: 1rem;
     text-decoration: underline;
-    color: #888888;
-    border: none;
-    outline: none;
-    background-color: inherit;
+    color: gray;
+    cursor: pointer;
 
     &:hover {
       color: black;

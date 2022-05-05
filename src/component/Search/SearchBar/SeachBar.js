@@ -1,5 +1,4 @@
 import './SearchBar.css';
-import logo from '../../../Assets/icon.png';
 
 const SearchBar = ({ onSearch }) => {
   const onSubmit = (event) => {
