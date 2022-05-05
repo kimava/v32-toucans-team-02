@@ -1,9 +1,9 @@
-# Bookish - Create your book log
+# Book Log - Create your own book log
 
 ## Overview
-This app was created for the Chingu Voyage 32 team project. It pulls data from [Google Books API](https://developers.google.com/books)
+This app was created as a refactored version of my previous team project. It pulls data from [Google Books API](https://developers.google.com/books)
 
-LIVE LINK: https://bookishlist.netlify.app/
+LIVE LINK: https://ava-booklog.netlify.app/
 
 
 ## `Features`
@@ -11,28 +11,18 @@ In this project, you can:
 
 - [x] Sign in with Google or Github account
 - [x] Search and browse through the list of books that match a given query
-- [x] Add chosen books to the user's book repository
-- [x] Edit reading status, rate, and add comment on the books in the repository
-- [x] Save user profiles and select genres
+- [x] Add chosen books to the user's book list
+- [x] Edit reading status, rate, and add some comments on the books in the list
+- [x] View stats of user's book list 
+- [x] Delete user account
 
 
 ## `Dev Dependencies`
 - React
-- React DOM
-- React Router
+- React Router DOM
 - Firebase (Authentication & Realtime database)
 - Axios
-- Google Fonts
+- Styled-components
 - Font Awesome
 - Material UI (rating)
 
-
-## `Contributors`
-
-**Razieh Ghahartars** \
-github :https://github.com/roziii
-
-
-**Ava Kim** \
-github : https://github.com/kimava \
-blog: www.kimava.com
