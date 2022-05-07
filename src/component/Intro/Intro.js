@@ -1,13 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/auth_context';
 import main from '../../Assets/main.png';
 import './Intro.css';
 
 const Intro = () => {
   const navigate = useNavigate();
+  const { userId } = useContext(AuthContext);
 
   const goToLogin = () => {
-    navigate('/Login');
+    !userId ? navigate('/login') : navigate('/search');
   };
 
   return (
