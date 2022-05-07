@@ -9,7 +9,7 @@ class CardRepo {
     const query = ref(this.db, `users/${userId}/cards`);
     onValue(query, (snapshot) => {
       const value = snapshot.val();
-      value && onUpdate(value);
+      onUpdate(value);
     });
     return () => off(query);
   }

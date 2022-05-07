@@ -2,9 +2,15 @@
   margin: auto;
   margin-top: 150px;
   display: grid;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
   width: 95%;
+}
+
+.card-container p {
+  font-style: italic;
+  text-align: center;
+  color: gray;
 }
 
 @media screen and (max-width: 48rem) {

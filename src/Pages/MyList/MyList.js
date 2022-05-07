@@ -7,6 +7,7 @@ import './MyList.css';
 const MyList = ({ cardRepo }) => {
   const { userId } = useContext(AuthContext);
   const [cards, setCards] = useState({});
+  const cardList = cards && Object.keys(cards);
 
   useEffect(() => {
     const stopFetch = cardRepo.fetchCards(userId, (items) => {
@@ -26,15 +27,18 @@ const MyList = ({ cardRepo }) => {
   return (
     <Layout>
       <div className='card-container'>
-        {cards &&
-          Object.keys(cards).map((item) => (
+        {cardList ? (
+          cardList.map((item) => (
             <Booklist
               key={cards[item].bookId}
               card={cards[item]}
               saveCard={saveCard}
               deleteCard={deleteCard}
             />
-          ))}
+          ))
+        ) : (
+          <p>no list yet</p>
+        )}
       </div>
     </Layout>
   );
