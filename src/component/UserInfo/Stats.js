@@ -7,6 +7,7 @@ const Stats = ({ cardRepo }) => {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
   const [cards, setCards] = useState({});
+  const cardList = cards && Object.keys(cards);
 
   useEffect(() => {
     if (!userId) {
@@ -18,10 +19,10 @@ const Stats = ({ cardRepo }) => {
     return () => stopFetch();
   }, [userId, navigate, cardRepo]);
 
-  const readingStatus = Object.keys(cards).map((item) => cards[item].status);
+  const readingStatus = cardList?.map((item) => cards[item].status);
 
   const bringStats = (status) => {
-    return readingStatus?.filter((item) => item === status).length;
+    return readingStatus?.filter((item) => item === status).length || 0;
   };
 
   return (
