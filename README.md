@@ -50,6 +50,7 @@ className을 관리할 필요가 없고, 유지보수 측면에서 용이하다�
 - Login status DI로 전달 → Context API 사용해 login status 확인
 - Private route 각 페이지 컴포넌트 안에 코드로 구현 → Private route component 생성
 - Firebase version 7 → version 9
+- 이외 common component 분리, 중복되는 코드 등 전반적인 코드 개선
 ```
 
 <br/>
@@ -65,7 +66,6 @@ Google Form을 이용해 유저 피드백을 수집하고 이에 따라 앱을 �
 - 도서 검색 결과 정렬 기능 추가 
 - My list 독서 상태 <select> UI 개선
 - MY page Stat 메뉴 독서 상태 하단에 도서 리스트 추가
-- 이외 common component 분리, 중복되는 코드 등 전반적인 코드 개선
 ```
 <br/>
 
