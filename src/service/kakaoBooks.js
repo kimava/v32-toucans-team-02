@@ -10,10 +10,10 @@ class Kakao {
         maxResults: this.maxResults,
       },
     });
-    return this.#trimList(response.data.documents);
+    return this.trimList(response.data.documents);
   }
 
-  #trimList(list) {
+  trimList(list) {
     let trimmed = [];
     list.map((item) => {
       const id = item.isbn;
@@ -23,10 +23,10 @@ class Kakao {
       const date = item.datetime.slice(0, 10);
       trimmed.push({ id, title, author, thumbnail, date });
     });
-    return this.#removeDuplicates(trimmed);
+    return this.removeDuplicates(trimmed);
   }
 
-  #removeDuplicates(array) {
+  removeDuplicates(array) {
     const set = new Set();
     return array.filter((item) => {
       const alreadyExist = set.has(item.id);
