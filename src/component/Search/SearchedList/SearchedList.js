@@ -2,16 +2,11 @@ import React from 'react';
 import ListItem from './ListItem';
 import './SearchedList.css';
 
-const SearchedList = ({ bookList, googleBooks, onAdd }) => {
+const SearchedList = ({ bookList, onAdd }) => {
   return bookList ? (
     <ul className='list_container'>
       {bookList.map((item) => (
-        <ListItem
-          key={item.id}
-          item={item}
-          googleBooks={googleBooks}
-          onAdd={onAdd}
-        />
+        <ListItem key={item.id} item={item} onAdd={onAdd} />
       ))}
     </ul>
   ) : (

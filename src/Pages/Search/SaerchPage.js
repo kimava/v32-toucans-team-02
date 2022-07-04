@@ -2,17 +2,20 @@ import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/auth_context';
 import axios from 'axios';
-import GoogleBooks from '../../component/Search/searchPresenter';
+import Kakao from '../../service/kakaoBooks';
 import Layout from '../../component/Layout/Layout';
 import SearchBar from '../../component/Search/SearchBar/SeachBar';
 import SearchedList from '../../component/Search/SearchedList/SearchedList';
 import PopUp from '../../component/PopUp/PopUp';
 
 const client = axios.create({
-  baseURL: 'https://www.googleapis.com/books/v1/volumes?q=',
+  baseURL: 'https://dapi.kakao.com/v3/search/book?query=',
+  headers: {
+    Authorization: process.env.REACT_APP_KAKAO_API_KEY,
+  },
 });
 
-const googleBooks = new GoogleBooks(client);
+const kakaoBooks = new Kakao(client, 40);
 
 const Search = ({ cardRepo }) => {
   const navigate = useNavigate();
@@ -21,9 +24,9 @@ const Search = ({ cardRepo }) => {
   const [popUpOpen, setPopUpOpen] = useState(false);
 
   const handleSearch = (value) => {
-    googleBooks
+    kakaoBooks
       .search(value)
-      .then((results) => setBookList(results))
+      .then(setBookList)
       .catch((error) => {
         console.log(error);
         setBookList(null);
@@ -48,11 +51,7 @@ const Search = ({ cardRepo }) => {
   return (
     <Layout>
       <SearchBar onSearch={handleSearch} />
-      <SearchedList
-        bookList={bookList}
-        googleBooks={googleBooks}
-        onAdd={addList}
-      />
+      <SearchedList bookList={bookList} onAdd={addList} />
       <PopUp
         open={popUpOpen}
         message={'we saved it to your list! 🎉'}

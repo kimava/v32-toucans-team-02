@@ -2,12 +2,11 @@ import React from 'react';
 import defaultImg from '../../../Assets/unknownImage.png';
 import './SearchedList.css';
 
-const ListItem = ({ item, googleBooks, onAdd }) => {
-  const list = googleBooks.trimList(item);
-  const { id, title, author, thumbnail, imgUrl } = list;
+const ListItem = ({ item, onAdd }) => {
+  const { id, title, author, thumbnail, date } = item;
 
   const handleClick = () => {
-    onAdd(id, title, author, imgUrl);
+    onAdd(id, title, author, thumbnail);
   };
 
   return (
@@ -19,6 +18,7 @@ const ListItem = ({ item, googleBooks, onAdd }) => {
       />
       <p>{title}</p>
       <p className='book_author'>{author}</p>
+      <p className='book_date'>{date}</p>
       <button className='add_btn' onClick={handleClick}>
         Add to list
       </button>
