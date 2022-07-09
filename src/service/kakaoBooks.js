@@ -3,11 +3,12 @@ class Kakao {
     this.kakaoBooks = client;
     this.maxResults = maxResults;
   }
+
   async search(query) {
     const response = await this.kakaoBooks.get(`${query}`, {
       params: {
         query: query,
-        maxResults: this.maxResults,
+        size: this.maxResults,
       },
     });
     return this.trimList(response.data.documents);
