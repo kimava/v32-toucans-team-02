@@ -1,5 +1,5 @@
 class StubBooksClient {
-  async search() {
+  async get() {
     return [
       {
         authors: ['톨킨'],
