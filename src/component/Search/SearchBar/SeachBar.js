@@ -8,6 +8,13 @@ const SearchBar = ({ onSearch }) => {
     }
   };
 
-  return <input type='search' id='search' onKeyPress={onSubmit} />;
+  return (
+    <input
+      type='search'
+      id='search'
+      placeholder='원하는 책을 검색하세요'
+      onKeyPress={onSubmit}
+    />
+  );
 };
 export default SearchBar;
