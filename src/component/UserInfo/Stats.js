@@ -34,16 +34,16 @@ const Stats = ({ cardRepo }) => {
           <h3>Total books</h3>
         </StatsList>
         <StatsList>
-          <p>{bringStats('read')}</p>
-          <h3>Reads</h3>
+          <p>{bringStats('to read')}</p>
+          <h3>To Read</h3>
         </StatsList>
         <StatsList>
           <p>{bringStats('reading')}</p>
           <h3>Reading</h3>
         </StatsList>
         <StatsList>
-          <p>{bringStats('toRead')}</p>
-          <h3>To read</h3>
+          <p>{bringStats('done')}</p>
+          <h3>Done</h3>
         </StatsList>
       </StatsDiv>
     </StyledDiv>

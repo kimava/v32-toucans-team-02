@@ -1,15 +1,18 @@
 import React, { useRef, useState } from 'react';
 import defaultImg from '../../Assets/unknownImage.png';
 import CustomizedRatings from '../UI/rating';
+import Selector from '../UI/selector';
 import styles from './BookList.module.css';
 
 const Booklist = ({ card, saveCard, deleteCard }) => {
   const { url, title, author, status, rate, comment, bookId } = card;
 
-  const statusRef = useRef();
   const commentRef = useRef();
 
   const [rating, setRating] = useState(rate ? rate : 0);
+  const [readingStatus, setReadingStatus] = useState(
+    status ? status : '독서 현황'
+  );
   const [editable, setEditable] = useState(true);
   const [disabled, setDisabled] = useState(false);
 
@@ -21,7 +24,7 @@ const Booklist = ({ card, saveCard, deleteCard }) => {
     event.preventDefault();
     const newcard = {
       ...card,
-      status: statusRef.current.value || '',
+      status: readingStatus,
       rate: rating * 1,
       comment: commentRef.current.value || '',
     };
@@ -56,17 +59,12 @@ const Booklist = ({ card, saveCard, deleteCard }) => {
       <span className={styles.author}>{author}</span>
 
       <div className={styles.editor}>
-        <select
-          name='status'
-          className={styles.selector}
-          ref={statusRef}
+        <Selector
+          title={readingStatus}
+          list={['to read', 'reading', 'done']}
           disabled={disabled}
-          defaultValue={status ? status : null}
-        >
-          <option value='toRead'>to read</option>
-          <option value='reading'>reading</option>
-          <option value='read'>done</option>
-        </select>
+          callback={setReadingStatus}
+        />
         <CustomizedRatings
           id={bookId}
           disabled={disabled}
