@@ -61,6 +61,7 @@ const Booklist = ({ card, saveCard, deleteCard }) => {
       <div className={styles.editor}>
         <Selector
           title={readingStatus}
+          setTitle={setReadingStatus}
           list={['to read', 'reading', 'done']}
           disabled={disabled}
           callback={setReadingStatus}

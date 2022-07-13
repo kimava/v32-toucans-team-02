@@ -14,6 +14,17 @@ class Kakao {
     return this.trimList(response.data.documents);
   }
 
+  async searchLatest(query) {
+    const response = await this.kakaoBooks.get(`${query}`, {
+      params: {
+        query: query,
+        sort: 'latest',
+        size: this.maxResults,
+      },
+    });
+    return this.trimList(response.data.documents);
+  }
+
   trimList(list) {
     let trimmed = [];
     list.map((item) => {

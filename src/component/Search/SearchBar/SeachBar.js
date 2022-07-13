@@ -1,10 +1,12 @@
 import './SearchBar.css';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = ({ onSearch, setQuery, setSelectorTitle }) => {
   const onSubmit = (event) => {
     if (event.key === 'Enter') {
       const value = event.target.value;
       onSearch(value);
+      setSelectorTitle('정렬기준');
+      setQuery(value);
     }
   };
 

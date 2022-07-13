@@ -7,6 +7,8 @@ import Layout from '../../component/Layout/Layout';
 import SearchBar from '../../component/Search/SearchBar/SeachBar';
 import SearchedList from '../../component/Search/SearchedList/SearchedList';
 import PopUp from '../../component/PopUp/PopUp';
+import Selector from '../../component/UI/selector';
+import styled from 'styled-components';
 
 const client = axios.create({
   baseURL: 'https://dapi.kakao.com/v3/search/book?query=',
@@ -21,16 +23,32 @@ const Search = ({ cardRepo }) => {
   const navigate = useNavigate();
   const { userId } = useContext(AuthContext);
   const [bookList, setBookList] = useState([]);
+  const [query, setQuery] = useState('');
+  const [selectorTitle, setSelectorTitle] = useState('정렬기준');
   const [popUpOpen, setPopUpOpen] = useState(false);
 
-  const handleSearch = (value) => {
+  const handleSearch = (query) => {
     kakaoBooks
-      .search(value)
+      .search(query)
       .then(setBookList)
       .catch((error) => {
         console.log(error);
         setBookList(null);
       });
+  };
+
+  const handleSearchLatest = (query) => {
+    kakaoBooks
+      .searchLatest(query)
+      .then(setBookList)
+      .catch((error) => {
+        console.log(error);
+        setBookList(null);
+      });
+  };
+
+  const handleSort = (sort) => {
+    sort === '정확도순' ? handleSearch(query) : handleSearchLatest(query);
   };
 
   const addList = (bookId, title, author, url) => {
@@ -50,7 +68,23 @@ const Search = ({ cardRepo }) => {
 
   return (
     <Layout>
-      <SearchBar onSearch={handleSearch} />
+      <StyledDiv>
+        <SearchBar
+          onSearch={handleSearch}
+          setQuery={setQuery}
+          setSelectorTitle={setSelectorTitle}
+        />
+        {bookList.length > 0 && (
+          <Selector
+            title={selectorTitle}
+            setTitle={setSelectorTitle}
+            list={['정확도순', '최신순']}
+            disabled={false}
+            callback={handleSort}
+          />
+        )}
+      </StyledDiv>
+
       <SearchedList bookList={bookList} onAdd={addList} />
       <PopUp
         open={popUpOpen}
@@ -71,3 +105,11 @@ const Search = ({ cardRepo }) => {
 };
 
 export default Search;
+
+const StyledDiv = styled.div`
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 90%;
+`;

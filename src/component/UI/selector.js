@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FiChevronDown } from 'react-icons/fi';
 
-const Selector = ({ title, list, disabled, callback }) => {
+const Selector = ({ title, setTitle, list, disabled, callback }) => {
   const [toggle, setToggle] = useState(false);
-  const [btnText, setBtnText] = useState(title);
 
   const handleBtnClick = (e) => {
     setToggle(false);
-    setBtnText(e.currentTarget.textContent);
+    setTitle(e.currentTarget.textContent);
     callback(e.currentTarget.textContent);
   };
 
@@ -23,7 +22,7 @@ const Selector = ({ title, list, disabled, callback }) => {
           setToggle(false);
         }}
       >
-        {btnText}
+        {title}
         <FiChevronDown className='icon' />
       </StyledBtn>
       <StyledUl
