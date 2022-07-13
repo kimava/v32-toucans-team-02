@@ -52,8 +52,9 @@ const Search = ({ cardRepo }) => {
   };
 
   const addList = (bookId, title, author, url) => {
-    const info = { title, author, url, bookId };
-    cardRepo.saveCard(userId, bookId, info);
+    const id = Date.now().toString();
+    const info = { key: id, title, author, url, bookId };
+    cardRepo.saveCard(userId, id, info);
     setPopUpOpen(true);
     document.body.style.overflow = 'hidden';
   };

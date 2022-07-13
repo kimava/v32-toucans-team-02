@@ -7,7 +7,7 @@ import './MyList.css';
 const MyList = ({ cardRepo }) => {
   const { userId } = useContext(AuthContext);
   const [cards, setCards] = useState({});
-  const cardList = cards && Object.keys(cards);
+  const cardList = cards && Object.keys(cards).reverse();
 
   useEffect(() => {
     const stopFetch = cardRepo.fetchCards(userId, (items) => {
@@ -17,11 +17,11 @@ const MyList = ({ cardRepo }) => {
   }, [userId, cardRepo]);
 
   const saveCard = (card) => {
-    cardRepo.saveCard(userId, card.bookId, card);
+    cardRepo.saveCard(userId, card.key, card);
   };
 
   const deleteCard = (selected) => {
-    cardRepo.removeCard(userId, selected.bookId);
+    cardRepo.removeCard(userId, selected.key);
   };
 
   return (
