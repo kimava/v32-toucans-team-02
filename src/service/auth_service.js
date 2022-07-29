@@ -4,7 +4,9 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
   deleteUser,
-} from 'firebase/auth';
+  reauthenticateWithCredential,
+  reauthenticateWithPopup
+} from "firebase/auth";
 
 class AuthService {
   constructor() {
@@ -29,26 +31,34 @@ class AuthService {
   }
 
   getProvider(providerName) {
-    switch (providerName) {
-      case 'Google':
+    const provider = providerName.toLowerCase().includes("google")
+      ? "google"
+      : "github";
+
+    switch (provider) {
+      case "google":
         return this.googleProvider;
-      case 'Github':
+      case "github":
         return this.githubProvider;
       default:
         throw new Error(`unknown provider: ${providerName}`);
     }
   }
 
-  deleteAccount() {
+  deleteAccount = async () => {
     const user = this.firebaseAuth.currentUser;
-    deleteUser(user)
-      .then(() => {
-        console.log('account deleted');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
+    const provider = this.getProvider(user.providerData[0].providerId);
+    reauthenticateWithPopup(user, provider).then(() => {
+      const currentUser = this.firebaseAuth.currentUser;
+      deleteUser(currentUser)
+        .then(() => {
+          console.log("account deleted");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+  };
 }
 
 export default AuthService;

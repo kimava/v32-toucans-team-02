@@ -1,7 +1,7 @@
-import React, { useContext, useState } from 'react';
-import { AuthContext } from '../../context/auth_context';
-import PopUp from '../PopUp/PopUp';
-import { SettingsDiv } from './UserAccountStyle';
+import React, { useContext, useState } from "react";
+import { AuthContext } from "../../context/auth_context";
+import PopUp from "../PopUp/PopUp";
+import { SettingsDiv } from "./UserAccountStyle";
 
 const UserAccount = () => {
   const { authService } = useContext(AuthContext);
@@ -28,14 +28,16 @@ const UserAccount = () => {
       <span onClick={onBtnClick}>Delete Account</span>
       <PopUp
         open={popUpOpen}
-        message={'Do you really wanna leave? 😢'}
+        message={
+          "To permanently delete your account, please reconfirm your account"
+        }
         handleClose={handlePopUpClose}
       >
         <button className='popUp_children' onClick={onDelete}>
-          Yes
+          Confirm
         </button>
         <button className='popUp_children' onClick={handlePopUpClose}>
-          No
+          Cancel
         </button>
       </PopUp>
     </SettingsDiv>
